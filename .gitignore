@@ -1,0 +1,13 @@
+# Build and Release Folders
+bin-debug/
+bin-release/
+ASpace/ASpace/obj/
+ASpace/ASpaceContent/obj/
+Menu/Menu/obj/
+MenuList/MenuList/obj/
+MenuList/MenuListContent/obj/
+_ReSharper.ArtificialSpace/
+bin/
+obj/
+
+# Project property files
