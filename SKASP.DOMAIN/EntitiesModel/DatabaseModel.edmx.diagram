@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1537819a23d14cf29aec76b450b6f12f" Name="Diagram1">
+        <EntityTypeShape EntityType="dotnetpractiseModel.Message" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dotnetpractiseModel.MessageStorage" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dotnetpractiseModel.News" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dotnetpractiseModel.Statistic" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dotnetpractiseModel.Theme" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dotnetpractiseModel.Topic" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dotnetpractiseModel.Usr_lg_data" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="dotnetpractiseModel.FK_Messages_Topics" />
+        <AssociationConnector Association="dotnetpractiseModel.FK_Messages_Usr_lg_data" />
+        <AssociationConnector Association="dotnetpractiseModel.FK_Themes_Usr_lg_data" />
+        <AssociationConnector Association="dotnetpractiseModel.FK_Topics_Themes" />
+        <AssociationConnector Association="dotnetpractiseModel.FK_Topics_Usr_lg_data" />
+        <EntityTypeShape EntityType="dotnetpractiseModel.sysdiagram" Width="1.5" PointX="6.2352605006821742" PointY="16.47604902855868" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
