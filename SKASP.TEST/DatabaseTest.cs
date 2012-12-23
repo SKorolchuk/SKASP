@@ -17,7 +17,7 @@ namespace dotNETPractiseWEBMVC4.Tests
         /// The test news and usr tbl.
         /// </summary>
         [TestMethod]
-        private void TestNewsAndUsrTbl()
+        public void TestNewsAndUsrTbl()
         {
             using (DatabaseEntities context = new DatabaseEntities())
             {
@@ -36,7 +36,7 @@ namespace dotNETPractiseWEBMVC4.Tests
         {
             using (DatabaseEntities context = new DatabaseEntities())
             {
-                context.News.Add(new News{Date = DateTime.Now, ID = 3456, "Test", "Testing"});
+                //context.News.Add(new News{Date = DateTime.Now, ID = 3456, Name = "Test", NewsContent = "Testing"});
                 Usr_lg_data user = context.Usr_lg_data.FirstOrDefault(x => x.id == 1);
                 Theme newTheme = new Theme
                 {
@@ -70,7 +70,7 @@ namespace dotNETPractiseWEBMVC4.Tests
                 context.SaveChanges();
                 Assert.IsTrue(context.Themes.Count(x => x.ID == newTheme.ID) > 0);
                 Assert.IsTrue(context.Topics.Count(x => x.ID == newTopic.ID) > 0);
-                Assert.IsTrue(context.Topics.Count(x => x.ID == newMessage.ID) > 0);
+                Assert.IsTrue(context.Messages.Count(x => x.ID == newMessage.ID) > 0);
                 context.Themes.Remove(newTheme);
                 context.Topics.Remove(newTopic);
                 context.Messages.Remove(newMessage);

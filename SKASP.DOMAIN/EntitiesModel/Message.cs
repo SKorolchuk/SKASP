@@ -19,5 +19,8 @@ namespace SKASP.DOMAIN.EntitiesModel
         public int Topic { get; set; }
         public string Text { get; set; }
         public System.DateTime Created_on { get; set; }
+    
+        public virtual Topic Topic1 { get; set; }
+        public virtual Usr_lg_data Usr_lg_data { get; set; }
     }
 }

@@ -14,11 +14,20 @@ namespace SKASP.DOMAIN.EntitiesModel
     
     public partial class Topic
     {
+        public Topic()
+        {
+            this.Messages = new HashSet<Message>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int Creator { get; set; }
         public System.DateTime Created_on { get; set; }
         public int Theme { get; set; }
+    
+        public virtual ICollection<Message> Messages { get; set; }
+        public virtual Theme Theme1 { get; set; }
+        public virtual Usr_lg_data Usr_lg_data { get; set; }
     }
 }

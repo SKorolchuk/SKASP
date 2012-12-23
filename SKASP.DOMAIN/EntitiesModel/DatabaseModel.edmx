@@ -4,33 +4,32 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="dotnetpractiseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="dotnetpractiseModelStoreContainer">
-          <EntitySet Name="Messages" EntityType="dotnetpractiseModel.Store.Messages" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MessageStorage" EntityType="dotnetpractiseModel.Store.MessageStorage" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="News" EntityType="dotnetpractiseModel.Store.News" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Statistics" EntityType="dotnetpractiseModel.Store.Statistics" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="sysdiagrams" EntityType="dotnetpractiseModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Themes" EntityType="dotnetpractiseModel.Store.Themes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Topics" EntityType="dotnetpractiseModel.Store.Topics" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Usr_lg_data" EntityType="dotnetpractiseModel.Store.Usr_lg_data" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_Messages_Topics" Association="dotnetpractiseModel.Store.FK_Messages_Topics">
+      <Schema Namespace="DatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Messages" EntityType="DatabaseModel.Store.Messages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MessageStorage" EntityType="DatabaseModel.Store.MessageStorage" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="News" EntityType="DatabaseModel.Store.News" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Statistics" EntityType="DatabaseModel.Store.Statistics" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Themes" EntityType="DatabaseModel.Store.Themes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Topics" EntityType="DatabaseModel.Store.Topics" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Usr_lg_data" EntityType="DatabaseModel.Store.Usr_lg_data" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Messages_Topics" Association="DatabaseModel.Store.FK_Messages_Topics">
             <End Role="Topics" EntitySet="Topics" />
             <End Role="Messages" EntitySet="Messages" />
           </AssociationSet>
-          <AssociationSet Name="FK_Messages_Usr_lg_data" Association="dotnetpractiseModel.Store.FK_Messages_Usr_lg_data">
+          <AssociationSet Name="FK_Messages_Usr_lg_data" Association="DatabaseModel.Store.FK_Messages_Usr_lg_data">
             <End Role="Usr_lg_data" EntitySet="Usr_lg_data" />
             <End Role="Messages" EntitySet="Messages" />
           </AssociationSet>
-          <AssociationSet Name="FK_Themes_Usr_lg_data" Association="dotnetpractiseModel.Store.FK_Themes_Usr_lg_data">
+          <AssociationSet Name="FK_Themes_Usr_lg_data" Association="DatabaseModel.Store.FK_Themes_Usr_lg_data">
             <End Role="Usr_lg_data" EntitySet="Usr_lg_data" />
             <End Role="Themes" EntitySet="Themes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Topics_Themes" Association="dotnetpractiseModel.Store.FK_Topics_Themes">
+          <AssociationSet Name="FK_Topics_Themes" Association="DatabaseModel.Store.FK_Topics_Themes">
             <End Role="Themes" EntitySet="Themes" />
             <End Role="Topics" EntitySet="Topics" />
           </AssociationSet>
-          <AssociationSet Name="FK_Topics_Usr_lg_data" Association="dotnetpractiseModel.Store.FK_Topics_Usr_lg_data">
+          <AssociationSet Name="FK_Topics_Usr_lg_data" Association="DatabaseModel.Store.FK_Topics_Usr_lg_data">
             <End Role="Usr_lg_data" EntitySet="Usr_lg_data" />
             <End Role="Topics" EntitySet="Topics" />
           </AssociationSet>
@@ -71,16 +70,6 @@
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Count" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Themes">
           <Key>
             <PropertyRef Name="ID" />
@@ -115,8 +104,8 @@
           <Property Name="created_on" Type="date" Nullable="false" />
         </EntityType>
         <Association Name="FK_Messages_Topics">
-          <End Role="Topics" Type="dotnetpractiseModel.Store.Topics" Multiplicity="1" />
-          <End Role="Messages" Type="dotnetpractiseModel.Store.Messages" Multiplicity="*" />
+          <End Role="Topics" Type="DatabaseModel.Store.Topics" Multiplicity="1" />
+          <End Role="Messages" Type="DatabaseModel.Store.Messages" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Topics">
               <PropertyRef Name="ID" />
@@ -127,8 +116,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Messages_Usr_lg_data">
-          <End Role="Usr_lg_data" Type="dotnetpractiseModel.Store.Usr_lg_data" Multiplicity="1" />
-          <End Role="Messages" Type="dotnetpractiseModel.Store.Messages" Multiplicity="*" />
+          <End Role="Usr_lg_data" Type="DatabaseModel.Store.Usr_lg_data" Multiplicity="1" />
+          <End Role="Messages" Type="DatabaseModel.Store.Messages" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usr_lg_data">
               <PropertyRef Name="id" />
@@ -139,8 +128,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Themes_Usr_lg_data">
-          <End Role="Usr_lg_data" Type="dotnetpractiseModel.Store.Usr_lg_data" Multiplicity="1" />
-          <End Role="Themes" Type="dotnetpractiseModel.Store.Themes" Multiplicity="*" />
+          <End Role="Usr_lg_data" Type="DatabaseModel.Store.Usr_lg_data" Multiplicity="1" />
+          <End Role="Themes" Type="DatabaseModel.Store.Themes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usr_lg_data">
               <PropertyRef Name="id" />
@@ -151,8 +140,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Topics_Themes">
-          <End Role="Themes" Type="dotnetpractiseModel.Store.Themes" Multiplicity="1" />
-          <End Role="Topics" Type="dotnetpractiseModel.Store.Topics" Multiplicity="*" />
+          <End Role="Themes" Type="DatabaseModel.Store.Themes" Multiplicity="1" />
+          <End Role="Topics" Type="DatabaseModel.Store.Topics" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Themes">
               <PropertyRef Name="ID" />
@@ -163,8 +152,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Topics_Usr_lg_data">
-          <End Role="Usr_lg_data" Type="dotnetpractiseModel.Store.Usr_lg_data" Multiplicity="1" />
-          <End Role="Topics" Type="dotnetpractiseModel.Store.Topics" Multiplicity="*" />
+          <End Role="Usr_lg_data" Type="DatabaseModel.Store.Usr_lg_data" Multiplicity="1" />
+          <End Role="Topics" Type="DatabaseModel.Store.Topics" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usr_lg_data">
               <PropertyRef Name="id" />
@@ -174,54 +163,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="dotnetpractiseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DatabaseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DatabaseEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Messages" EntityType="dotnetpractiseModel.Message" />
-          <EntitySet Name="MessageStorages" EntityType="dotnetpractiseModel.MessageStorage" />
-          <EntitySet Name="News" EntityType="dotnetpractiseModel.News" />
-          <EntitySet Name="Statistics" EntityType="dotnetpractiseModel.Statistic" />
-          <EntitySet Name="Themes" EntityType="dotnetpractiseModel.Theme" />
-          <EntitySet Name="Topics" EntityType="dotnetpractiseModel.Topic" />
-          <EntitySet Name="Usr_lg_data" EntityType="dotnetpractiseModel.Usr_lg_data" />
-          <AssociationSet Name="FK_Messages_Topics" Association="dotnetpractiseModel.FK_Messages_Topics">
-            <End Role="Topic" EntitySet="Topics" />
-            <End Role="Message" EntitySet="Messages" />
+          <EntitySet Name="Messages" EntityType="DatabaseModel.Message" />
+          <EntitySet Name="MessageStorages" EntityType="DatabaseModel.MessageStorage" />
+          <EntitySet Name="News" EntityType="DatabaseModel.News" />
+          <EntitySet Name="Statistics" EntityType="DatabaseModel.Statistic" />
+          <EntitySet Name="Themes" EntityType="DatabaseModel.Theme" />
+          <EntitySet Name="Topics" EntityType="DatabaseModel.Topic" />
+          <EntitySet Name="Usr_lg_data" EntityType="DatabaseModel.Usr_lg_data" />
+          <AssociationSet Name="FK_Messages_Topics" Association="DatabaseModel.FK_Messages_Topics">
+            <End Role="Topics" EntitySet="Topics" />
+            <End Role="Messages" EntitySet="Messages" />
           </AssociationSet>
-          <AssociationSet Name="FK_Messages_Usr_lg_data" Association="dotnetpractiseModel.FK_Messages_Usr_lg_data">
+          <AssociationSet Name="FK_Messages_Usr_lg_data" Association="DatabaseModel.FK_Messages_Usr_lg_data">
             <End Role="Usr_lg_data" EntitySet="Usr_lg_data" />
-            <End Role="Message" EntitySet="Messages" />
+            <End Role="Messages" EntitySet="Messages" />
           </AssociationSet>
-          <AssociationSet Name="FK_Themes_Usr_lg_data" Association="dotnetpractiseModel.FK_Themes_Usr_lg_data">
+          <AssociationSet Name="FK_Themes_Usr_lg_data" Association="DatabaseModel.FK_Themes_Usr_lg_data">
             <End Role="Usr_lg_data" EntitySet="Usr_lg_data" />
-            <End Role="Theme" EntitySet="Themes" />
+            <End Role="Themes" EntitySet="Themes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Topics_Themes" Association="dotnetpractiseModel.FK_Topics_Themes">
-            <End Role="Theme" EntitySet="Themes" />
-            <End Role="Topic" EntitySet="Topics" />
+          <AssociationSet Name="FK_Topics_Themes" Association="DatabaseModel.FK_Topics_Themes">
+            <End Role="Themes" EntitySet="Themes" />
+            <End Role="Topics" EntitySet="Topics" />
           </AssociationSet>
-          <AssociationSet Name="FK_Topics_Usr_lg_data" Association="dotnetpractiseModel.FK_Topics_Usr_lg_data">
+          <AssociationSet Name="FK_Topics_Usr_lg_data" Association="DatabaseModel.FK_Topics_Usr_lg_data">
             <End Role="Usr_lg_data" EntitySet="Usr_lg_data" />
-            <End Role="Topic" EntitySet="Topics" />
+            <End Role="Topics" EntitySet="Topics" />
           </AssociationSet>
-          <EntitySet Name="sysdiagrams" EntityType="dotnetpractiseModel.sysdiagram" />
         </EntityContainer>
         <EntityType Name="Message">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="Creator" />
-            <PropertyRef Name="Topic" />
-            <PropertyRef Name="Created_on" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Creator" Type="Int32" Nullable="false" />
           <Property Name="Topic" Type="Int32" Nullable="false" />
           <Property Name="Text" Type="String" MaxLength="512" Unicode="true" FixedLength="true" />
           <Property Name="Created_on" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Topic1" Relationship="dotnetpractiseModel.FK_Messages_Topics" FromRole="Message" ToRole="Topic" />
-          <NavigationProperty Name="Usr_lg_data" Relationship="dotnetpractiseModel.FK_Messages_Usr_lg_data" FromRole="Message" ToRole="Usr_lg_data" />
+          <NavigationProperty Name="Topic1" Relationship="DatabaseModel.FK_Messages_Topics" FromRole="Messages" ToRole="Topics" />
+          <NavigationProperty Name="Usr_lg_data" Relationship="DatabaseModel.FK_Messages_Usr_lg_data" FromRole="Messages" ToRole="Usr_lg_data" />
         </EntityType>
         <EntityType Name="MessageStorage">
           <Key>
@@ -244,8 +230,6 @@
         <EntityType Name="Statistic">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Count" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
@@ -254,8 +238,6 @@
         <EntityType Name="Theme">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="Creator" />
-            <PropertyRef Name="Created_on" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="256" Unicode="true" FixedLength="true" />
@@ -263,15 +245,12 @@
           <Property Name="Creator" Type="Int32" Nullable="false" />
           <Property Name="Created_on" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Subgroup" Type="String" MaxLength="64" Unicode="true" FixedLength="true" />
-          <NavigationProperty Name="Usr_lg_data" Relationship="dotnetpractiseModel.FK_Themes_Usr_lg_data" FromRole="Theme" ToRole="Usr_lg_data" />
-          <NavigationProperty Name="Topics" Relationship="dotnetpractiseModel.FK_Topics_Themes" FromRole="Theme" ToRole="Topic" />
+          <NavigationProperty Name="Usr_lg_data" Relationship="DatabaseModel.FK_Themes_Usr_lg_data" FromRole="Themes" ToRole="Usr_lg_data" />
+          <NavigationProperty Name="Topics" Relationship="DatabaseModel.FK_Topics_Themes" FromRole="Themes" ToRole="Topics" />
         </EntityType>
         <EntityType Name="Topic">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="Creator" />
-            <PropertyRef Name="Created_on" />
-            <PropertyRef Name="Theme" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="256" Unicode="true" FixedLength="true" />
@@ -279,16 +258,13 @@
           <Property Name="Creator" Type="Int32" Nullable="false" />
           <Property Name="Created_on" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Theme" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Messages" Relationship="dotnetpractiseModel.FK_Messages_Topics" FromRole="Topic" ToRole="Message" />
-          <NavigationProperty Name="Theme1" Relationship="dotnetpractiseModel.FK_Topics_Themes" FromRole="Topic" ToRole="Theme" />
-          <NavigationProperty Name="Usr_lg_data" Relationship="dotnetpractiseModel.FK_Topics_Usr_lg_data" FromRole="Topic" ToRole="Usr_lg_data" />
+          <NavigationProperty Name="Messages" Relationship="DatabaseModel.FK_Messages_Topics" FromRole="Topics" ToRole="Messages" />
+          <NavigationProperty Name="Theme1" Relationship="DatabaseModel.FK_Topics_Themes" FromRole="Topics" ToRole="Themes" />
+          <NavigationProperty Name="Usr_lg_data" Relationship="DatabaseModel.FK_Topics_Usr_lg_data" FromRole="Topics" ToRole="Usr_lg_data" />
         </EntityType>
         <EntityType Name="Usr_lg_data">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="loginstr" />
-            <PropertyRef Name="passwd" />
-            <PropertyRef Name="created_on" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="15" Unicode="true" FixedLength="true" />
@@ -296,88 +272,78 @@
           <Property Name="loginstr" Type="String" Nullable="false" MaxLength="8" Unicode="true" FixedLength="true" />
           <Property Name="passwd" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
           <Property Name="created_on" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Messages" Relationship="dotnetpractiseModel.FK_Messages_Usr_lg_data" FromRole="Usr_lg_data" ToRole="Message" />
-          <NavigationProperty Name="Themes" Relationship="dotnetpractiseModel.FK_Themes_Usr_lg_data" FromRole="Usr_lg_data" ToRole="Theme" />
-          <NavigationProperty Name="Topics" Relationship="dotnetpractiseModel.FK_Topics_Usr_lg_data" FromRole="Usr_lg_data" ToRole="Topic" />
+          <NavigationProperty Name="Messages" Relationship="DatabaseModel.FK_Messages_Usr_lg_data" FromRole="Usr_lg_data" ToRole="Messages" />
+          <NavigationProperty Name="Themes" Relationship="DatabaseModel.FK_Themes_Usr_lg_data" FromRole="Usr_lg_data" ToRole="Themes" />
+          <NavigationProperty Name="Topics" Relationship="DatabaseModel.FK_Topics_Usr_lg_data" FromRole="Usr_lg_data" ToRole="Topics" />
         </EntityType>
         <Association Name="FK_Messages_Topics">
-          <End Type="dotnetpractiseModel.Topic" Role="Topic" Multiplicity="1" />
-          <End Type="dotnetpractiseModel.Message" Role="Message" Multiplicity="*" />
+          <End Role="Topics" Type="DatabaseModel.Topic" Multiplicity="1" />
+          <End Role="Messages" Type="DatabaseModel.Message" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Topic">
+            <Principal Role="Topics">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Message">
+            <Dependent Role="Messages">
               <PropertyRef Name="Topic" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Messages_Usr_lg_data">
-          <End Type="dotnetpractiseModel.Usr_lg_data" Role="Usr_lg_data" Multiplicity="1" />
-          <End Type="dotnetpractiseModel.Message" Role="Message" Multiplicity="*" />
+          <End Role="Usr_lg_data" Type="DatabaseModel.Usr_lg_data" Multiplicity="1" />
+          <End Role="Messages" Type="DatabaseModel.Message" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usr_lg_data">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Message">
+            <Dependent Role="Messages">
               <PropertyRef Name="Creator" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Themes_Usr_lg_data">
-          <End Type="dotnetpractiseModel.Usr_lg_data" Role="Usr_lg_data" Multiplicity="1" />
-          <End Type="dotnetpractiseModel.Theme" Role="Theme" Multiplicity="*" />
+          <End Role="Usr_lg_data" Type="DatabaseModel.Usr_lg_data" Multiplicity="1" />
+          <End Role="Themes" Type="DatabaseModel.Theme" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usr_lg_data">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Theme">
+            <Dependent Role="Themes">
               <PropertyRef Name="Creator" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Topics_Themes">
-          <End Type="dotnetpractiseModel.Theme" Role="Theme" Multiplicity="1" />
-          <End Type="dotnetpractiseModel.Topic" Role="Topic" Multiplicity="*" />
+          <End Role="Themes" Type="DatabaseModel.Theme" Multiplicity="1" />
+          <End Role="Topics" Type="DatabaseModel.Topic" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Theme">
+            <Principal Role="Themes">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Topic">
+            <Dependent Role="Topics">
               <PropertyRef Name="Theme" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Topics_Usr_lg_data">
-          <End Type="dotnetpractiseModel.Usr_lg_data" Role="Usr_lg_data" Multiplicity="1" />
-          <End Type="dotnetpractiseModel.Topic" Role="Topic" Multiplicity="*" />
+          <End Role="Usr_lg_data" Type="DatabaseModel.Usr_lg_data" Multiplicity="1" />
+          <End Role="Topics" Type="DatabaseModel.Topic" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usr_lg_data">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Topic">
+            <Dependent Role="Topics">
               <PropertyRef Name="Creator" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="principal_id" Nullable="false" />
-          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="version" />
-          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dotnetpractiseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
           <EntitySetMapping Name="Messages">
-            <EntityTypeMapping TypeName="dotnetpractiseModel.Message">
+            <EntityTypeMapping TypeName="DatabaseModel.Message">
               <MappingFragment StoreEntitySet="Messages">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Creator" ColumnName="Creator" />
@@ -388,7 +354,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MessageStorages">
-            <EntityTypeMapping TypeName="dotnetpractiseModel.MessageStorage">
+            <EntityTypeMapping TypeName="DatabaseModel.MessageStorage">
               <MappingFragment StoreEntitySet="MessageStorage">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -398,7 +364,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="News">
-            <EntityTypeMapping TypeName="dotnetpractiseModel.News">
+            <EntityTypeMapping TypeName="DatabaseModel.News">
               <MappingFragment StoreEntitySet="News">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -408,7 +374,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Statistics">
-            <EntityTypeMapping TypeName="dotnetpractiseModel.Statistic">
+            <EntityTypeMapping TypeName="DatabaseModel.Statistic">
               <MappingFragment StoreEntitySet="Statistics">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -417,7 +383,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Themes">
-            <EntityTypeMapping TypeName="dotnetpractiseModel.Theme">
+            <EntityTypeMapping TypeName="DatabaseModel.Theme">
               <MappingFragment StoreEntitySet="Themes">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -429,7 +395,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Topics">
-            <EntityTypeMapping TypeName="dotnetpractiseModel.Topic">
+            <EntityTypeMapping TypeName="DatabaseModel.Topic">
               <MappingFragment StoreEntitySet="Topics">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -441,7 +407,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usr_lg_data">
-            <EntityTypeMapping TypeName="dotnetpractiseModel.Usr_lg_data">
+            <EntityTypeMapping TypeName="DatabaseModel.Usr_lg_data">
               <MappingFragment StoreEntitySet="Usr_lg_data">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -449,17 +415,6 @@
                 <ScalarProperty Name="loginstr" ColumnName="loginstr" />
                 <ScalarProperty Name="passwd" ColumnName="passwd" />
                 <ScalarProperty Name="created_on" ColumnName="created_on" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="dotnetpractiseModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

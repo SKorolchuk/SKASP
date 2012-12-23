@@ -14,11 +14,22 @@ namespace SKASP.DOMAIN.EntitiesModel
     
     public partial class Usr_lg_data
     {
+        public Usr_lg_data()
+        {
+            this.Messages = new HashSet<Message>();
+            this.Themes = new HashSet<Theme>();
+            this.Topics = new HashSet<Topic>();
+        }
+    
         public int id { get; set; }
         public string Name { get; set; }
         public string SubName { get; set; }
         public string loginstr { get; set; }
         public string passwd { get; set; }
         public System.DateTime created_on { get; set; }
+    
+        public virtual ICollection<Message> Messages { get; set; }
+        public virtual ICollection<Theme> Themes { get; set; }
+        public virtual ICollection<Topic> Topics { get; set; }
     }
 }
