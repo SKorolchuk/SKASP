@@ -1,0 +1,28 @@
+﻿@using SKASP.DOMAIN
+@using SKASP.DOMAIN.EntitiesModel
+@model SKASP.DOMAIN.Abstract.INewsRepository
+
+@{
+    ViewBag.Title = "Default";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="row-fluid">
+        <div class="span12">
+          <div class="hero-unit">
+            <h1>Greetings you on my ASP.NET Blog!</h1>
+              <p>This technical blog I used for increased my knowledges in web design, development and etc.</p>
+              <p>Free hosting is very bad. ASP.NET MVC4, Ninject and a lot of other things incompatible with that server.</p>
+              <p>And I start to develop offline version of my technical blog. You can find it at my github projects.</p>
+              <p>I threw this hosting. :)</p>
+            <p><a class="btn btn-primary btn-large" href="@Url.Action("About", "Home")">Learn more &raquo;</a></p>
+          </div>
+            <div id="NewsArray">
+                @Model.Updates.Count()
+                @foreach (News news in Model.Updates)
+                {
+                    Html.RenderPartial("News", news);
+                }
+            </div>
+            </div><!--/span-->
+</div><!--/row-->

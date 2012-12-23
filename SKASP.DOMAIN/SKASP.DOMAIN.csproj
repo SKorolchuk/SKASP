@@ -92,12 +92,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SKASP.WEB\SKASP.WEB.csproj">
-      <Project>{e874d23a-fb06-431a-b372-007fee95a49c}</Project>
-      <Name>SKASP.WEB</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>

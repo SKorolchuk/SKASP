@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Rss";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model List<string>
+@using ReaderEx
+
+    <script type="text/javascript">
+        function gotonews() {
+            document.getElementById('NewsFrame').src = document.getElementById('Content_RSSList').value.split('\n')[1];
+        }
+        function LoadRss() {
+            
+        }
+    </script>
+    <div class="pagination pagination-centered">
+    <a id="TuTUrl" href="RSS/Rss/tut" style="background: #ffffff;">TuT.by</a>
+    <a id="HabraUrl" href="RSS/Rss/habra"  style="background: #ffffff;">Habr</a>
+    <a id="ItUrl" href="RSS/Rss/it_tut" style="background: #ffffff;">It.TuT.by</a>
+    </div>
+    <div>
+        <select id="RssFeed" class="RssFeedList" style="background: royalblue; width: 100%">
+            @foreach (string s in Model)
+            {
+                <option>@s</option>
+            }
+        </select>
+    </div>
+    <div align="center" style="height: 35px">
+         <input class="btn btn-primary btn-large" type="button" value="Go To News" id="newsGoToBtn" onclick="gotonews();"/>
+    </div> 
+    <br/>
+    <iframe id="NewsFrame" src="" scrolling="auto" class="span11" style="margin-left: 0px; height: 700px;"/>
+
+
+      
+
+     
+      
+

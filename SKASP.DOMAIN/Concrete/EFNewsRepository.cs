@@ -22,7 +22,7 @@ namespace SKASP.DOMAIN.Concrete
         /// <summary>
         /// The context.
         /// </summary>
-        private readonly DatabaseEntities context = new DatabaseEntities();
+        private DatabaseEntities context = new DatabaseEntities();
 
         /// <summary>
         /// Gets the updates.

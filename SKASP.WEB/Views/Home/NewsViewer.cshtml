@@ -1,0 +1,12 @@
+﻿@model SKASP.DOMAIN.EntitiesModel.News
+
+@{
+    ViewBag.Title = "NewsViewer";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div id="TitleDiv" class="label label-success" style="font-size: 23px; padding: 10px;">News Title: @Model.Name</div>
+<br/>
+<div id="DescrDiv" class="well well-large">Description: @Html.Raw(Model.NewsContent)</div>
+<br/>
+<div id="TimeDiv" class="label">Published Date: @Convert.ToDateTime(Model.Date).ToString("MM-dd-yyyy")</div>

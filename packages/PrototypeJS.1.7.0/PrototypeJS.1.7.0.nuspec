@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>PrototypeJS</id>
+    <version>1.7.0</version>
+    <authors>Victor Gama</authors>
+    <owners>Victor Gama</owners>
+    <licenseUrl>http://github.com/sstephenson/prototype/raw/master/LICENSE</licenseUrl>
+    <projectUrl>http://prototypejs.org/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Prototype is a JavaScript Framework that aims to ease development of dynamic web applications.
+Featuring a unique, easy-to-use toolkit for class-driven development and the nicest Ajax library around, Prototype is quickly becoming the codebase of choice for web application developers everywhere.</description>
+    <releaseNotes />
+    <copyright>Copyright 2006-2007 Prototype Core Team</copyright>
+    <tags>Javascript Prototype js Prototype.js PrototypeJS</tags>
+  </metadata>
+</package>
