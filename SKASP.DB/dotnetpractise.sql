@@ -1,7 +1,7 @@
 USE [master]
 GO
 
-/****** Object:  Database [dotnetpractise]    Script Date: 12/23/2012 1:57:55 AM ******/
+/****** Object:  Database [dotnetpractise]    Script Date: 12/23/2012 1:01:40 PM ******/
 CREATE DATABASE [dotnetpractise]
  CONTAINMENT = NONE
  ON  PRIMARY 

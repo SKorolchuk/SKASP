@@ -1,7 +1,7 @@
 USE [dotnetpractise]
 GO
 
-/****** Object:  Table [dbo].[Statistics]    Script Date: 12/23/2012 2:00:49 AM ******/
+/****** Object:  Table [dbo].[Statistics]    Script Date: 12/23/2012 1:04:19 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,7 +11,11 @@ GO
 CREATE TABLE [dbo].[Statistics](
 	[ID] [int] NOT NULL,
 	[Date] [date] NOT NULL,
-	[Count] [int] NOT NULL
+	[Count] [int] NOT NULL,
+ CONSTRAINT [PK_Statistics] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
