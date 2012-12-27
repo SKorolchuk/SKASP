@@ -159,7 +159,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
-    <Content Include="Content\wood.jpg" />
+    <Content Include="Content\images\background\wood.jpg" />
+    <Content Include="Content\images\icons\chat.png" />
+    <Content Include="Content\images\icons\feed-icon-16x16.png" />
+    <Content Include="Content\images\icons\info.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="Internal\ReaderEx.dll" />

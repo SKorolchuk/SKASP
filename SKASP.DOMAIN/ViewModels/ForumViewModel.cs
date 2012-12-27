@@ -2,6 +2,7 @@ namespace SKASP.DOMAIN.ViewModels
 {
     using System.Linq;
 
+    using SKASP.DOMAIN.Abstract;
     using SKASP.DOMAIN.EntitiesModel;
 	
 	public enum ForumPlace{
@@ -13,7 +14,7 @@ namespace SKASP.DOMAIN.ViewModels
 	public class ForumViewModel
 	{
 		public ForumPlace Place { get; set; }
-		public IForumRepository ForumRepo { get; }
+        public IForumRepository ForumRepo { get; private set; }
 		public Message CurrrentMessage {get; set; }
 		public Topic CurrentTopic { get; set; }
 		public Theme CurrentTheme { get; set; }

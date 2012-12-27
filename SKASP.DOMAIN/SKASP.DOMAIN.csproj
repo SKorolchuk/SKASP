@@ -50,6 +50,7 @@
     <Compile Include="Abstract\IForumRepository.cs" />
     <Compile Include="Abstract\IMessageRepository.cs" />
     <Compile Include="Abstract\INewsRepository.cs" />
+    <Compile Include="Auth\User.cs" />
     <Compile Include="Concrete\EFForumRepository.cs" />
     <Compile Include="Concrete\EFMessageRepository.cs" />
     <Compile Include="Concrete\EFNewsRepository.cs" />
@@ -90,6 +91,8 @@
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ChatViewModel.cs" />
+    <Compile Include="ViewModels\ForumViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

@@ -1,4 +1,13 @@
 ﻿body {
+   padding-top: 60px;
+   padding-left: 100px;
+   padding-right: 100px;
+   padding-bottom: 40px;
+   background-image: url(../Content/images/background/wood.jpg);
+   background-attachment: fixed;
+}
+.sidebar-nav {
+    padding: 9px 0;
 }
 
 .row-fluid {
@@ -7,4 +16,29 @@
 
 .RssFeedList {
     width: 80%;
+}
+
+.chat {
+    background: url(../Content/images/icons/chat.png);
+    background-size: 16px;
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+.rss {
+    background: url(../Content/images/icons/feed-icon-16x16.png);
+    background-size: 16px;
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+.info {
+    
+    background-image: url(../Content/images/icons/info.ico);
+    background-size: 16px;
+    display: block;
+    width: 16px;
+    height: 16px;
 }
