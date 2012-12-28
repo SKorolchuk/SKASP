@@ -40,6 +40,8 @@
     <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +56,7 @@
     <Compile Include="Concrete\EFForumRepository.cs" />
     <Compile Include="Concrete\EFMessageRepository.cs" />
     <Compile Include="Concrete\EFNewsRepository.cs" />
+    <Compile Include="EntitiesModel\AccountModels.cs" />
     <Compile Include="EntitiesModel\DatabaseModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

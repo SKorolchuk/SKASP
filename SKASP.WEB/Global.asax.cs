@@ -8,6 +8,9 @@ using System.Web.Routing;
 
 namespace SKASP.WEB
 {
+    using System.Web.Optimization;
+
+    using SKASP.WEB.App_Start;
     using SKASP.WEB.Internal;
 
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -21,6 +24,9 @@ namespace SKASP.WEB
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BootstrapBundleConfig.RegisterBundles();
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AuthConfig.RegisterAuth();
             ControllerBuilder.Current.SetControllerFactory(new IoCControllerFactory());
         }
     }

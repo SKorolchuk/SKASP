@@ -6,6 +6,9 @@ using System.Web.Mvc;
 
 namespace SKASP.WEB.Controllers
 {
+    using SKASP.DOMAIN.Abstract;
+    using SKASP.DOMAIN.ViewModels;
+
     public class ChatController : Controller
     {
 		private IMessageRepository messages;
@@ -21,7 +24,7 @@ namespace SKASP.WEB.Controllers
 			viewModel.MessageRepo = messages;			
 		}
 		
-        public ViewResult Chat(string user = string.Empty)
+        public ViewResult Chat(string user = "")
         {
             return this.View(viewModel);
         }

@@ -13,9 +13,9 @@ namespace SKASP.DOMAIN.ViewModels
 		//TODO: Change to User class type
         public string CurrentUser { get; set; }
 		
-		public MessageViewModel(string user = string.Empty)
+		public MessageViewModel(string user = "")
 		{
-			MessageStorage = new MessageStorage();
+            CurrrentMessage = new MessageStorage();
 			CurrentUser = user;
 		}
 	}

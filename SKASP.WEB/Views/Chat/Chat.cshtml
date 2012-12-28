@@ -1,4 +1,5 @@
-﻿@model SKASP.DOMAIN.ViewModels.MessageViewModel
+﻿@using SKASP.DOMAIN.EntitiesModel
+@model SKASP.DOMAIN.ViewModels.MessageViewModel
 @{
     ViewBag.Title = "Chat";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
@@ -14,7 +15,7 @@
 			<input type="text" ID="NameTxtBox" style="Width: 627px;" value="@Model.CurrrentMessage.Name"/>
 			<!-- Realize bindings to model -->
 			<p ID="MessageLbl" style="color: White;">Message</p>
-			<input type="text" ID="MessageTxtBox" style="width: 1026px;" value="@Model.CurrentMessage.Data"/>
+			<input type="text" ID="MessageTxtBox" style="width: 1026px;" value="@Model.CurrrentMessage.Data"/>
 		</div>
 		<div align="center">
 			<input type="button" ID="SendMessageBtn" value="Send Message" OnClick="" CssClass="btn btn-primary btn-large" action="submit"/>
