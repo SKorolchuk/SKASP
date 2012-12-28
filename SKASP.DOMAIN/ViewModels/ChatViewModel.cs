@@ -8,8 +8,15 @@ namespace SKASP.DOMAIN.ViewModels
 	
 	public class MessageViewModel
 	{
-        public IMessageRepository MessageRepo { get; private set; }
+        public IMessageRepository MessageRepo { get; set; }
 		public MessageStorage CurrrentMessage {get; set; }
-        public User CurrentUser { get; private set; }
+		//TODO: Change to User class type
+        public string CurrentUser { get; set; }
+		
+		public MessageViewModel(string user = string.Empty)
+		{
+			MessageStorage = new MessageStorage();
+			CurrentUser = user;
+		}
 	}
 }

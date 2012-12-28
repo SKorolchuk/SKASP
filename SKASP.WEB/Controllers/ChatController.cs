@@ -8,9 +8,29 @@ namespace SKASP.WEB.Controllers
 {
     public class ChatController : Controller
     {
-        public ViewResult Chat()
+		private IMessageRepository messages;
+		private MessageViewModel viewModel;
+		
+		//TODO: change user type from string User class
+		private string user;
+		
+		public ChatController(IMessageRepository repo)
+		{
+			messages = repo;
+			viewModel = new MessageViewModel(user);
+			viewModel.MessageRepo = messages;			
+		}
+		
+        public ViewResult Chat(string user = string.Empty)
         {
-            return this.View();
+            return this.View(viewModel);
+        }
+		
+		[HttpPost]
+		public ViewResult Chat(MessageViewModel view)
+        {
+			//TODO: realize post-redirect-get pattern here (MsgOwner == CurrentUser)
+            return this.View(view);
         }
     }
 }
