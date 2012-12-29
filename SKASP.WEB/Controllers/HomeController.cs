@@ -34,7 +34,7 @@ namespace SKASP.WEB.Controllers
                 return this.View(repo);
             }
         }
-
+        [Authorize]
         public ViewResult About()
         {
             return this.View();
