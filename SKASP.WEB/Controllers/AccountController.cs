@@ -55,7 +55,7 @@ namespace SKASP.WEB.Controllers
         {
             WebSecurity.Logout();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Default", "Home");
         }
 
         //
@@ -82,7 +82,7 @@ namespace SKASP.WEB.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Default", "Home");
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -338,7 +338,7 @@ namespace SKASP.WEB.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Default", "Home");
             }
         }
 
