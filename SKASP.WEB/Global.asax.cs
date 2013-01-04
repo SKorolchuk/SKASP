@@ -28,6 +28,21 @@ namespace SKASP.WEB
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
             ControllerBuilder.Current.SetControllerFactory(new IoCControllerFactory());
+			GlobalConfiguration.Configuration.ServiceResolver.SetResolver
+			(
+			 
+				t =>
+				{
+					if (t == typeof(RestApiController))
+					{
+						return new RestApiController(new TaskRepository());
+					}
+			 
+					return null;
+				},
+			 
+				t => new List<object>()
+			);
         }
     }
 }
