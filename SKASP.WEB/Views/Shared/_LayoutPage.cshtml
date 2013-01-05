@@ -30,15 +30,23 @@
           <div class="btn-group pull-right">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
               <i class="icon-user"></i>
-              <span id="login_status">You are not loggined now</span>
+	            <span id="login_status">
+		            @if (!Request.IsAuthenticated)
+		            {
+			            @Html.Raw("You are not loggined now");
+		            }
+		            else
+		            {
+			            Html.Raw("Hello, ");
+			            Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" });
+			            Html.Raw("!");
+		            }
+	            </span>
               <span class="caret"></span>
             </a>
-            <ul class="dropdown-menu">
-              <li><input class="search-query span2" placeholder="Name" id="Name" type="text"/></li>
-              <li><input class="search-query span2" placeholder="Password" id="Pass" type="password"/></li>
-              <li class="divider"></li>
-              <li><a id="SignInOrOut">Sign In</a></li>
-            </ul>
+	          <ul class="dropdown-menu">
+		          <li>@Html.Partial("_LoginPartial")</li>
+	          </ul>
           </div>
           <div class="nav-collapse">
             <ul class="nav">
@@ -59,7 +67,6 @@
               </li>
               <li><a href="@Url.Action("RSS", "RSS")">News Feed</a></li>
                 <li><a href="@Url.Action("Chat", "Chat")">Chat</a></li>
-                <li>@Html.Partial("_LoginPartial")</li>
               <li><a id="AllVisitors"></a></li>
               <li><a id="TodayVisitors"></a></li>
                 <li><a id="Time"></a></li>

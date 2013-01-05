@@ -34,12 +34,12 @@
 				<p>Wish you a lot of fun with my site...</p>
             <p><a class="btn btn-primary btn-large" href="@Url.Action("About", "Home")">Learn more &raquo;</a></p>
           </div>
-            <div id="NewsArray">
-                @Model.Updates.Count()
-                @foreach (News news in Model.Updates)
-                {
-                    Html.RenderPartial("News", news);
-                }
-            </div>
-            </div><!--/span-->
+	        <div id="NewsArray" class="label-success well">
+		        You can see @Model.Updates.Count() news on this site!
+					</div>
+		        @foreach (News news in Model.Updates)
+		        {
+			        Html.RenderPartial("News", news);
+		        }
+	        </div><!--/span-->
 </div><!--/row-->

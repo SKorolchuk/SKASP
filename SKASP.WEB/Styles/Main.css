@@ -42,3 +42,15 @@
     width: 16px;
     height: 16px;
 }
+
+.row-fluid .span12 {
+	margin-left: 0;
+}
+
+#NewsArray {
+	padding: 20px;
+	font-family: 'Segoe UI Mono', 'Arial';
+	font-size: 16px;
+	color: #fefefe;
+	margin-bottom: 10px;
+}
