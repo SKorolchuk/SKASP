@@ -1,10 +1,9 @@
-﻿namespace SKASP.DOMAIN.Abstract
+﻿using System.Linq;
+using SKASP.DOMAIN.EntitiesModel;
+
+namespace SKASP.DOMAIN.Abstract
 {
-    using System.Linq;
-
-    using SKASP.DOMAIN.EntitiesModel;
-
-    public interface INewsRepository : ITaskRepository
+    public interface INewsRepository : ITaskRepository<News>
     {
         IQueryable<News> Updates { get; }
     }

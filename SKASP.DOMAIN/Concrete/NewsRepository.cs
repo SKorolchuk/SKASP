@@ -34,22 +34,22 @@ namespace SKASP.DOMAIN.Concrete
             }   
         }
 
-        public IEnumerable<Task> Get()
+        public IEnumerable<News> Get()
         {
             throw new System.NotImplementedException();
         }
 
-        public Task Get(int id)
+        public News Get(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task Post(Task Task)
+        public bool Post(News Task)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task Put(Task Task)
+        public News Put(News Task)
         {
             throw new System.NotImplementedException();
         }

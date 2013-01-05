@@ -4,15 +4,15 @@ using SKASP.DOMAIN.EntitiesModel;
 
 namespace SKASP.DOMAIN.Abstract
 {
-	public interface ITaskRepository
+	public interface ITaskRepository<T>
 	{
-		IEnumerable<Task> Get();
+		IEnumerable<T> Get();
 	 
-		Task Get(int id);
+		T Get(int id);
 	 
-		Task Post(Task Task);
+		bool Post(T Task);
 	 
-		Task Put(Task Task);
+		T Put(T Task);
 	 
 		bool Delete(int id);
 	}

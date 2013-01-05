@@ -6,8 +6,8 @@
 
     public interface IForumRepository
     {
-         IQueryable<Message> Messages { get; }
-         IQueryable<Topic> Topics { get; }
-         IQueryable<Theme> Themes { get; }
+         IForumMessageRepository Messages { get; set; }
+         IForumTopicRepository Topics { get; set; }
+         IForumThemeRepository Themes { get; set; }
     }
 }

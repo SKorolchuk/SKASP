@@ -4,7 +4,7 @@
 
     using SKASP.DOMAIN.EntitiesModel;
 
-    public interface IMessageRepository
+    public interface IMessageRepository : ITaskRepository<MessageStorage>
     {
         IQueryable<MessageStorage> Messages { get; }
     }
