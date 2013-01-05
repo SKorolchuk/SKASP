@@ -1,7 +1,7 @@
 USE [dotnetpractise]
 GO
 
-/****** Object:  Table [dbo].[Topics]    Script Date: 12/23/2012 1:03:31 PM ******/
+/****** Object:  Table [dbo].[Topics]    Script Date: 1/5/2013 11:08:48 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -28,13 +28,6 @@ REFERENCES [dbo].[Themes] ([ID])
 GO
 
 ALTER TABLE [dbo].[Topics] CHECK CONSTRAINT [FK_Topics_Themes]
-GO
-
-ALTER TABLE [dbo].[Topics]  WITH CHECK ADD  CONSTRAINT [FK_Topics_Usr_lg_data] FOREIGN KEY([Creator])
-REFERENCES [dbo].[Usr_lg_data] ([id])
-GO
-
-ALTER TABLE [dbo].[Topics] CHECK CONSTRAINT [FK_Topics_Usr_lg_data]
 GO
 
 

@@ -1,7 +1,7 @@
 USE [dotnetpractise]
 GO
 
-/****** Object:  Table [dbo].[Messages]    Script Date: 12/23/2012 1:05:27 PM ******/
+/****** Object:  Table [dbo].[Messages]    Script Date: 1/5/2013 11:08:31 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -27,13 +27,6 @@ REFERENCES [dbo].[Topics] ([ID])
 GO
 
 ALTER TABLE [dbo].[Messages] CHECK CONSTRAINT [FK_Messages_Topics]
-GO
-
-ALTER TABLE [dbo].[Messages]  WITH CHECK ADD  CONSTRAINT [FK_Messages_Usr_lg_data] FOREIGN KEY([Creator])
-REFERENCES [dbo].[Usr_lg_data] ([id])
-GO
-
-ALTER TABLE [dbo].[Messages] CHECK CONSTRAINT [FK_Messages_Usr_lg_data]
 GO
 
 

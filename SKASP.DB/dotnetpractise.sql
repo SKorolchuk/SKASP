@@ -1,13 +1,13 @@
 USE [master]
 GO
 
-/****** Object:  Database [dotnetpractise]    Script Date: 12/23/2012 1:01:40 PM ******/
+/****** Object:  Database [dotnetpractise]    Script Date: 1/5/2013 11:09:17 PM ******/
 CREATE DATABASE [dotnetpractise]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'dotnetpractise', FILENAME = N'dotnetpractise.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+( NAME = N'dotnetpractise', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL11.SKORSQLSERV\MSSQL\DATA\dotnetpractise.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
  LOG ON 
-( NAME = N'dotnetpractise_log', FILENAME = N'dotnetpractise_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+( NAME = N'dotnetpractise_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL11.SKORSQLSERV\MSSQL\DATA\dotnetpractise_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
 GO
 
 ALTER DATABASE [dotnetpractise] SET COMPATIBILITY_LEVEL = 110

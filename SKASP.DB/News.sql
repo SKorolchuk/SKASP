@@ -1,7 +1,7 @@
 USE [dotnetpractise]
 GO
 
-/****** Object:  Table [dbo].[News]    Script Date: 12/23/2012 1:04:47 PM ******/
+/****** Object:  Table [dbo].[News]    Script Date: 1/5/2013 11:08:38 PM ******/
 SET ANSI_NULLS ON
 GO
 
