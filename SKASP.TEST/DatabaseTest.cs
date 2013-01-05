@@ -22,9 +22,7 @@ namespace dotNETPractiseWEBMVC4.Tests
             using (DatabaseEntities context = new DatabaseEntities())
             {
                 int count_news = (from msg in context.News select msg).Count();
-                int count_usr = (from usr in context.Usr_lg_data select usr).Count();
                 Assert.IsTrue(count_news > 0);
-                Assert.IsTrue(count_usr > 0);
             }
         }
 
@@ -36,13 +34,11 @@ namespace dotNETPractiseWEBMVC4.Tests
         {
             using (DatabaseEntities context = new DatabaseEntities())
             {
-                //context.News.Add(new News{Date = DateTime.Now, ID = 3456, Name = "Test", NewsContent = "Testing"});
-                Usr_lg_data user = context.Usr_lg_data.FirstOrDefault(x => x.id == 1);
+                context.News.Add(new News{Date = DateTime.Now, ID = 3456, Name = "Test", NewsContent = "Testing"});
                 Theme newTheme = new Theme
                 {
                     Created_on = DateTime.Now,
                     ID = (new Random((int)DateTime.Now.Ticks)).Next(),
-                    Creator = user.id,
                     Name = "Test Theme",
                     Description = "Hello World",
                     Subgroup = "All"
@@ -50,7 +46,6 @@ namespace dotNETPractiseWEBMVC4.Tests
                 Topic newTopic = new Topic()
                 {
                     Created_on = DateTime.Now,
-                    Creator = user.id,
                     Description = "Hello world topic",
                     ID = (new Random((int)DateTime.Now.Ticks)).Next(),
                     Name = "Test Topic",
@@ -59,7 +54,6 @@ namespace dotNETPractiseWEBMVC4.Tests
                 Message newMessage = new Message()
                 {
                     Created_on = DateTime.Now,
-                    Creator = user.id,
                     ID = (new Random((int)DateTime.Now.Ticks)).Next(),
                     Text = "hello",
                     Topic = newTopic.ID          

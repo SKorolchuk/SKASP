@@ -6,14 +6,13 @@
 //   The ef news repository.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+using System.Collections.Generic;
+using System.Linq;
+using SKASP.DOMAIN.Abstract;
+using SKASP.DOMAIN.EntitiesModel;
 
 namespace SKASP.DOMAIN.Concrete
 {
-    using System.Linq;
-
-    using SKASP.DOMAIN.Abstract;
-    using SKASP.DOMAIN.EntitiesModel;
-
     /// <summary>
     /// The ef news repository.
     /// </summary>
@@ -33,6 +32,31 @@ namespace SKASP.DOMAIN.Concrete
             {
                 return this.context.News;
             }   
+        }
+
+        public IEnumerable<Task> Get()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Post(Task Task)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Put(Task Task)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool Delete(int id)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

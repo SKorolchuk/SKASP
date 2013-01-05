@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using SKASP.DOMAIN.EntitiesModel;
 
 namespace SKASP.DOMAIN.Abstract
 {

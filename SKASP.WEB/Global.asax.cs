@@ -5,14 +5,14 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Optimization;
+using SKASP.DOMAIN.Concrete;
+using SKASP.WEB.App_Start;
+using SKASP.WEB.Controllers;
+using SKASP.WEB.Internal;
 
 namespace SKASP.WEB
 {
-    using System.Web.Optimization;
-
-    using SKASP.WEB.App_Start;
-    using SKASP.WEB.Internal;
-
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
     public class MvcApplication : System.Web.HttpApplication
@@ -28,21 +28,6 @@ namespace SKASP.WEB
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
             ControllerBuilder.Current.SetControllerFactory(new IoCControllerFactory());
-			GlobalConfiguration.Configuration.ServiceResolver.SetResolver
-			(
-			 
-				t =>
-				{
-					if (t == typeof(RestApiController))
-					{
-						return new RestApiController(new TaskRepository());
-					}
-			 
-					return null;
-				},
-			 
-				t => new List<object>()
-			);
         }
     }
 }

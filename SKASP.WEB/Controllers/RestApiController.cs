@@ -3,27 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using SKASP.DOMAIN.Abstract;
+using SKASP.DOMAIN.Concrete;
+using SKASP.DOMAIN.EntitiesModel;
 
 namespace SKASP.WEB.Controllers
 {
-    using SKASP.DOMAIN.Abstract;
-    using SKASP.DOMAIN.Concrete;
-    using SKASP.DOMAIN.EntitiesModel;
-
-	//TODO: Implement Rest Api for message chat and forum
+    //TODO: Implement Rest Api for message chat and forum
     public class RestApiController : ApiController
     {
-		private readonly ITaskRepository _taskRepository;
+		private readonly INewsRepository _taskRepository;
  
-		public TasksController(ITaskRepository taskRepository)
+		public RestApiController(INewsRepository taskRepository)
 		{
 			_taskRepository = taskRepository;
 		}
 		
 		// GET ./REST/RestApi/
-        public IEnumerable<Task> Get()
-		{	
-			return _taskRepository.Get();
+		public IEnumerable<News> Get()
+		{
+			return null;
 		}
 		
 		// GET ./REST/RestApi/5
@@ -39,19 +41,16 @@ namespace SKASP.WEB.Controllers
 													Content = new StringContent("Task not found")
 												});
 			}
-			
 			return task;
 		}
 		
 		// POST ./REST/RestApi/
-		public HttpResponseMessage<Task> Post(Task value)
+		public void Post(Task value)
 		{
-			Task post = _taskRepository.Post(value);
-			var response = new HttpResponseMessage<Task>(task, HttpStatusCode.Created);
-			string uri = Url.Route(null , new {id = post.Id});
-			response.Header.Location = new Uri(Request.RequestUri, uri);
-			
-			return response;
+			value = _taskRepository.Post(value);
+			// response = new HttpResponseMessage(value, HttpStatusCode.Created);
+			string uri = Url.Route(null , new {id = value.Id});
+			//return response;
 		}
 		
 		// PUT ./REST/RestApi/5
@@ -70,7 +69,7 @@ namespace SKASP.WEB.Controllers
 												});
 			}
 			
-			return task;
+			return value;
 		}
 		
 		// DELETE ./REST/RestApi/5

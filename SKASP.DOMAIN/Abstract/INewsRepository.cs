@@ -4,7 +4,7 @@
 
     using SKASP.DOMAIN.EntitiesModel;
 
-    public interface INewsRepository
+    public interface INewsRepository : ITaskRepository
     {
         IQueryable<News> Updates { get; }
     }
