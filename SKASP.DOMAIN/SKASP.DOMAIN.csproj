@@ -49,18 +49,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IForumMessageRepository.cs" />
     <Compile Include="Abstract\IForumRepository.cs" />
+    <Compile Include="Abstract\IForumThemeRepository.cs" />
+    <Compile Include="Abstract\IForumTopicRepository.cs" />
     <Compile Include="Abstract\IMessageRepository.cs" />
     <Compile Include="Abstract\INewsRepository.cs" />
     <Compile Include="Abstract\ITaskRepository.cs" />
-    <Compile Include="Auth\User.cs" />
-    <Compile Include="Concrete\EFForumRepository.cs" />
-    <Compile Include="Concrete\EFMessageRepository.cs" />
-    <Compile Include="Concrete\EFNewsRepository.cs" />
-    <Compile Include="Concrete\TaskRepository.cs" />
+    <Compile Include="Concrete\ForumMessageRepository.cs" />
+    <Compile Include="Concrete\ForumRepository.cs" />
+    <Compile Include="Concrete\ForumThemeRepository.cs" />
+    <Compile Include="Concrete\ForumTopicRepository.cs" />
+    <Compile Include="Concrete\MessageRepository.cs" />
+    <Compile Include="Concrete\NewsRepository.cs" />
     <Compile Include="EntitiesModel\AccountModels.cs" />
     <Compile Include="EntitiesModel\DataModels.cs" />
-    <Compile Include="EntitiesModel\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\ForumViewModel.cs" />
