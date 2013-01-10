@@ -49,16 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IForumMessageRepository.cs" />
     <Compile Include="Abstract\IForumRepository.cs" />
-    <Compile Include="Abstract\IForumThemeRepository.cs" />
-    <Compile Include="Abstract\IForumTopicRepository.cs" />
-    <Compile Include="Abstract\IImageRepository.cs" />
-    <Compile Include="Abstract\IMessageRepository.cs" />
-    <Compile Include="Abstract\INewsRepository.cs" />
+    <Compile Include="Abstract\IManageable.cs" />
     <Compile Include="Abstract\ITaskRepository.cs" />
     <Compile Include="Concrete\ForumMessageRepository.cs" />
-    <Compile Include="Concrete\ForumRepository.cs" />
+    <Compile Include="Concrete\EFForumRepository.cs" />
     <Compile Include="Concrete\ForumThemeRepository.cs" />
     <Compile Include="Concrete\ForumTopicRepository.cs" />
     <Compile Include="Concrete\MessageRepository.cs" />

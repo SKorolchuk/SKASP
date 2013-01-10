@@ -1,4 +1,4 @@
-﻿@model SKASP.DOMAIN.Abstract.IForumThemeRepository
+﻿@model SKASP.DOMAIN.Abstract.IManageable<SKASP.DOMAIN.EntitiesModel.Theme>
 
 @{
 	ViewBag.Title = "Forum";
@@ -7,7 +7,7 @@
 
 <h2>Forum</h2>
 
-@foreach (var theme in Model.Themes)
+@foreach (var theme in Model.Repository)
 {
 	<p>@theme.Name</p>
 	<p>@theme.Description</p>
