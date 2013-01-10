@@ -7,36 +7,68 @@ using SKASP.DOMAIN.Abstract;
 
 namespace SKASP.DOMAIN.Concrete
 {
-    public class ForumMessageRepository : IForumMessageRepository
+	using SKASP.DOMAIN.EntitiesModel;
+
+	public class ForumMessageRepository : IManageable<Message>
     {
-        public IQueryable<EntitiesModel.Message> Messages
-        {
-            get { throw new NotImplementedException(); }
-        }
+		private DatabaseEntities dataContext = new DatabaseEntities();
 
-        public IEnumerable<EntitiesModel.Message> Get()
-        {
-            throw new NotImplementedException();
-        }
+		public IQueryable<Message> Repository
+		{
+			get { return dataContext.Messages; }
+		}
 
-        public EntitiesModel.Message Get(int id)
-        {
-            throw new NotImplementedException();
-        }
+		public void AddValue(Message record)
+		{
+			if (this.dataContext.Messages.Count(x => x.ID == record.ID) == 0)
+			{
+				dataContext.Messages.Add(record);
+				dataContext.SaveChanges();
+			}
+		}
 
-        public bool Post(EntitiesModel.Message Task)
-        {
-            throw new NotImplementedException();
-        }
+		public void RemoveValue(Message record)
+		{
+			if (this.dataContext.Messages.Count(x => x.ID == record.ID) > 0)
+			{
+				dataContext.Messages.Remove(record);
+				dataContext.SaveChanges();
+			}
+		}
 
-        public EntitiesModel.Message Put(EntitiesModel.Message Task)
-        {
-            throw new NotImplementedException();
-        }
+		public void EditValue(Message record)
+		{
+			if (this.dataContext.Messages.Count(x => x.ID == record.ID) > 0)
+			{
+				dataContext.Messages.Remove(dataContext.Messages.FirstOrDefault(x => x.ID == record.ID));
+				dataContext.Messages.Add(record);
+				dataContext.SaveChanges();
+			}
+		}
 
-        public bool Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-    }
+		public IEnumerable<Message> Get()
+		{
+			throw new NotImplementedException();
+		}
+
+		public Message Get(int id)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool Post(Message value)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Message Put(Message value)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool Delete(int id)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

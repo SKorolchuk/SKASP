@@ -3,9 +3,9 @@ using SKASP.DOMAIN.EntitiesModel;
 
 namespace SKASP.DOMAIN.Abstract
 {
-    public interface IManageable<T>
+    public interface IManageable<T> : ITaskRepository<T>
     {
-        IQueryable<T> repository { get; }
+        IQueryable<T> Repository { get; }
 	    void AddValue(T record);
 	    void RemoveValue(T record);
 	    void EditValue(T record);

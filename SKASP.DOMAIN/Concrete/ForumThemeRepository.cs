@@ -7,36 +7,97 @@ using SKASP.DOMAIN.Abstract;
 
 namespace SKASP.DOMAIN.Concrete
 {
-    public class ForumThemeRepository : IForumThemeRepository
+	using System.Diagnostics;
+
+	using SKASP.DOMAIN.EntitiesModel;
+
+	public class ForumThemeRepository : IManageable<Theme>
     {
-        public IQueryable<EntitiesModel.Theme> Themes
-        {
-            get { throw new NotImplementedException(); }
-        }
+		private DatabaseEntities dataContext = new DatabaseEntities();
+		private IQueryable<Theme> Repository
+		{
+			get
+			{
+				return dataContext.Themes;
+			}
+		}
 
-        public IEnumerable<EntitiesModel.Theme> Get()
-        {
-            throw new NotImplementedException();
-        }
+		public IEnumerable<Theme> Get()
+		{
+			return Repository;
+		}
 
-        public EntitiesModel.Theme Get(int id)
-        {
-            throw new NotImplementedException();
-        }
+		public Theme Get(int id)
+		{
+			return Repository.FirstOrDefault(x => x.ID == id);
+		}
 
-        public bool Post(EntitiesModel.Theme Task)
-        {
-            throw new NotImplementedException();
-        }
+		public bool Post(Theme value)
+		{
+			try
+			{
+				this.AddValue(value);
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine(e.Message);
+				return false;
+			}
+		}
 
-        public EntitiesModel.Theme Put(EntitiesModel.Theme Task)
-        {
-            throw new NotImplementedException();
-        }
+		public Theme Put(Theme value)
+		{
+			try
+			{
+				this.EditValue(value);
+				return value;
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine(e.Message);
+				return null;
+			}
+		}
 
-        public bool Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+		public bool Delete(int id)
+		{
+			try
+			{
+				this.RemoveValue(Repository.FirstOrDefault(x => x.ID == id));
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine(e.Message);
+				return false;
+			}
+		}
+
+		public void AddValue(Theme record)
+		{
+			if (dataContext.Themes.Count(x => x.ID == record.ID) > 0)
+			{
+				dataContext.Themes.Add(record);
+				dataContext.SaveChanges();
+			}
+		}
+
+		public void RemoveValue(Theme record)
+		{
+			if (this.dataContext.Themes.Count(x => x.ID == record.ID) > 0)
+			{
+				dataContext.Themes.Remove(record);
+				dataContext.SaveChanges();
+			}
+		}
+
+		public void EditValue(Theme record)
+		{
+			if (this.dataContext.Themes.Count(x => x.ID == record.ID) > 0)
+			{
+				dataContext.Themes.Remove(dataContext.Themes.FirstOrDefault(x => x.ID == record.ID));
+				dataContext.Themes.Add(record);
+				dataContext.SaveChanges();
+			}
+		}
     }
 }

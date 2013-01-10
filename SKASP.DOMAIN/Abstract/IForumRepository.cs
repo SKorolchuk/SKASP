@@ -1,13 +1,34 @@
-﻿namespace SKASP.DOMAIN.Abstract
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IForumRepository.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The ForumRepository interface.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+using SKASP.DOMAIN.EntitiesModel;
+
+namespace SKASP.DOMAIN.Abstract
 {
-    using System.Linq;
-
-    using SKASP.DOMAIN.EntitiesModel;
-
-    public interface IForumRepository
+	/// <summary>
+	/// The ForumRepository interface.
+	/// </summary>
+	public interface IForumRepository
     {
-         IForumMessageRepository Messages { get; set; }
-         IForumTopicRepository Topics { get; set; }
-         IForumThemeRepository Themes { get; set; }
+		/// <summary>
+		/// Gets the messages.
+		/// </summary>
+		IManageable<Message> Messages { get; }
+
+		/// <summary>
+		/// Gets the topics.
+		/// </summary>
+		IManageable<Topic> Topics { get; }
+
+		/// <summary>
+		/// Gets the themes.
+		/// </summary>
+		IManageable<Theme> Themes { get; }
     }
 }

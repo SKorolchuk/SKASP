@@ -7,36 +7,97 @@ using SKASP.DOMAIN.Abstract;
 
 namespace SKASP.DOMAIN.Concrete
 {
-    public class ForumTopicRepository : IForumTopicRepository
+	using System.Diagnostics;
+
+	using SKASP.DOMAIN.EntitiesModel;
+
+	public class ForumTopicRepository : IManageable<Topic>
     {
-        public IQueryable<EntitiesModel.Topic> Updates
-        {
-            get { throw new NotImplementedException(); }
-        }
+		private DatabaseEntities dataContext = new DatabaseEntities();
 
-        public IEnumerable<EntitiesModel.Topic> Get()
-        {
-            throw new NotImplementedException();
-        }
+		public IEnumerable<Topic> Get()
+		{
+			return dataContext.Topics;
+		}
 
-        public EntitiesModel.Topic Get(int id)
-        {
-            throw new NotImplementedException();
-        }
+		public Topic Get(int id)
+		{
+			return dataContext.Topics.FirstOrDefault(x => x.ID == id);
+		}
 
-        public bool Post(EntitiesModel.Topic Task)
-        {
-            throw new NotImplementedException();
-        }
+		public bool Post(Topic value)
+		{
+			try
+			{
+				this.AddValue(value);
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine(e.Message);
+				return false;
+			}
+		}
 
-        public EntitiesModel.Topic Put(EntitiesModel.Topic Task)
-        {
-            throw new NotImplementedException();
-        }
+		public Topic Put(Topic value)
+		{
+			try
+			{
+				this.EditValue(value);
+				return value;
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine(e.Message);
+				return null;
+			}
+		}
 
-        public bool Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+		public bool Delete(int id)
+		{
+			try
+			{
+				dataContext.Topics.Remove(dataContext.Topics.FirstOrDefault(x => x.ID == id));
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine(e.Message);
+				return false;
+			}
+		}
+
+		public IQueryable<Topic> Repository 
+		{ 
+			get
+			{
+				return dataContext.Topics;
+			} 
+		}
+
+		public void AddValue(Topic record)
+		{
+			if (dataContext.Topics.Count(x => x.ID == record.ID) == 0)
+			{
+				dataContext.Topics.Add(record);
+				dataContext.SaveChanges();
+			}
+		}
+
+		public void RemoveValue(Topic record)
+		{
+			if (dataContext.Topics.Count(x => x.ID == record.ID) > 0)
+			{
+				dataContext.Topics.Remove(record);
+			}
+		}
+
+		public void EditValue(Topic record)
+		{
+			if (this.dataContext.Messages.Count(x => x.ID == record.ID) > 0)
+			{
+				dataContext.Topics.Remove(dataContext.Topics.FirstOrDefault(x => x.ID == record.ID));
+				dataContext.Topics.Add(record);
+				dataContext.SaveChanges();
+			}
+		}
     }
 }
