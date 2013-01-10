@@ -1,122 +1,326 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using System.Globalization;
-using System.Web.Security;
+using System.Linq;
 
 namespace SKASP.DOMAIN.EntitiesModel
 {
-    public class DatabaseEntities : DbContext
+	/// <summary>
+	/// The database entities.
+	/// </summary>
+	public class DatabaseEntities : DbContext
     {
-        public DatabaseEntities()
+		/// <summary>
+		/// Initializes a new instance of the <see cref="DatabaseEntities"/> class.
+		/// </summary>
+		public DatabaseEntities()
             : base("DefaultConnection")
         {
         }
 
-        public DbSet<Message> Messages { get; set; }
-        public DbSet<MessageStorage> MessageStorages { get; set; }
-        public DbSet<News> News { get; set; }
-        public DbSet<Statistic> Statistics { get; set; }
-        public DbSet<Theme> Themes { get; set; }
-        public DbSet<Topic> Topics { get; set; }
+		/// <summary>
+		/// Gets or sets the messages.
+		/// </summary>
+		public DbSet<Message> Messages { get; set; }
+
+		/// <summary>
+		/// Gets or sets the message storages.
+		/// </summary>
+		public DbSet<MessageStorage> MessageStorages { get; set; }
+
+		/// <summary>
+		/// Gets or sets the news.
+		/// </summary>
+		public DbSet<News> News { get; set; }
+
+		/// <summary>
+		/// Gets or sets the statistics.
+		/// </summary>
+		public DbSet<Statistic> Statistics { get; set; }
+
+		/// <summary>
+		/// Gets or sets the themes.
+		/// </summary>
+		public DbSet<Theme> Themes { get; set; }
+
+		/// <summary>
+		/// Gets or sets the topics.
+		/// </summary>
+		public DbSet<Topic> Topics { get; set; }
+
+		/// <summary>
+		/// Gets or sets the pictures.
+		/// </summary>
 		public DbSet<Picture> Pictures { get; set; }
+
+		/// <summary>
+		/// Gets or sets the user data storage.
+		/// </summary>
 		public DbSet<UserData> UserDataStorage { get; set; }
     }
 
+	/// <summary>
+	/// The user data.
+	/// </summary>
 	[Table("UserData")]
 	public class UserData
 	{
+		/// <summary>
+		/// Gets or sets the user id.
+		/// </summary>
 		[Key]
 		public int UserId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the name.
+		/// </summary>
 		public string Name { get; set; }
+
+		/// <summary>
+		/// Gets or sets the sub name.
+		/// </summary>
 		public string SubName { get; set; }
+
+		/// <summary>
+		/// Gets or sets the birth date.
+		/// </summary>
 		public Nullable<System.DateTime> BirthDate { get; set; }
+
+		/// <summary>
+		/// Gets or sets the interests.
+		/// </summary>
 		public string Interests { get; set; }
+
+		/// <summary>
+		/// Gets or sets the birth city.
+		/// </summary>
 		public string BirthCity { get; set; }
-		public int AvatarId { get; set; } 
+
+		/// <summary>
+		/// Gets or sets the avatar id.
+		/// </summary>
+		public int AvatarId { get; set; }
+
+		/// <summary>
+		/// The get avatar.
+		/// </summary>
+		/// <param name="pictures">
+		/// The pictures.
+		/// </param>
+		/// <returns>
+		/// The <see cref="Picture"/>.
+		/// </returns>
 		public Picture GetAvatar(DbSet<Picture> pictures)
 		{
 			return pictures.FirstOrDefault(x => x.PictureId == this.AvatarId);
 		}
 	}
-	
+
+	/// <summary>
+	/// The picture.
+	/// </summary>
 	[Table("PictureStorage")]
 	public class Picture
 	{
+		/// <summary>
+		/// Gets or sets the picture id.
+		/// </summary>
 		[Key]
 		[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
 		public int PictureId { get; set; }
 
+		/// <summary>
+		/// Gets or sets the picture binary.
+		/// </summary>
 		public byte[] PictureBinary { get; set; }
-		public FileStream ReturnImageFile()
-		{
-			return .Write(PictureBinary, 0, PictureBinary.Length);
-		}
 	}
-	
-    [Table("Message")]
+
+	/// <summary>
+	/// The message.
+	/// </summary>
+	[Table("Message")]
     public class Message
     {
-        [Key]
+		/// <summary>
+		/// Gets or sets the id.
+		/// </summary>
+		[Key]
         public int ID { get; set; }
-        public int Creator { get; set; }
-        public int Topic { get; set; }
-        public string Text { get; set; }
-        public System.DateTime Created_on { get; set; }
+
+		/// <summary>
+		/// Gets or sets the creator.
+		/// </summary>
+		public int Creator { get; set; }
+
+		/// <summary>
+		/// Gets or sets the topic.
+		/// </summary>
+		public int Topic { get; set; }
+
+		/// <summary>
+		/// Gets or sets the text.
+		/// </summary>
+		public string Text { get; set; }
+
+		/// <summary>
+		/// Gets or sets the created_on.
+		/// </summary>
+		public System.DateTime Created_on { get; set; }
     }
 
-    [Table("Topic")]
+	/// <summary>
+	/// The topic.
+	/// </summary>
+	[Table("Topic")]
     public class Topic
     {
-        [Key]
+		/// <summary>
+		/// Gets or sets the id.
+		/// </summary>
+		[Key]
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int Creator { get; set; }
-        public System.DateTime Created_on { get; set; }
-        public int Theme { get; set; }
+
+		/// <summary>
+		/// Gets or sets the name.
+		/// </summary>
+		public string Name { get; set; }
+
+		/// <summary>
+		/// Gets or sets the description.
+		/// </summary>
+		public string Description { get; set; }
+
+		/// <summary>
+		/// Gets or sets the creator.
+		/// </summary>
+		public int Creator { get; set; }
+
+		/// <summary>
+		/// Gets or sets the created_on.
+		/// </summary>
+		public System.DateTime Created_on { get; set; }
+
+		/// <summary>
+		/// Gets or sets the theme.
+		/// </summary>
+		public int Theme { get; set; }
     }
 
-    [Table("Theme")]
+	/// <summary>
+	/// The theme.
+	/// </summary>
+	[Table("Theme")]
     public class Theme
     {
-        [Key]
+		/// <summary>
+		/// Gets or sets the id.
+		/// </summary>
+		[Key]
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int Creator { get; set; }
-        public System.DateTime Created_on { get; set; }
-        public string Subgroup { get; set; }
+
+		/// <summary>
+		/// Gets or sets the name.
+		/// </summary>
+		public string Name { get; set; }
+
+		/// <summary>
+		/// Gets or sets the description.
+		/// </summary>
+		public string Description { get; set; }
+
+		/// <summary>
+		/// Gets or sets the creator.
+		/// </summary>
+		public int Creator { get; set; }
+
+		/// <summary>
+		/// Gets or sets the created_on.
+		/// </summary>
+		public System.DateTime Created_on { get; set; }
+
+		/// <summary>
+		/// Gets or sets the subgroup.
+		/// </summary>
+		public string Subgroup { get; set; }
     }
 
-    [Table("Statistic")]
+	/// <summary>
+	/// The statistic.
+	/// </summary>
+	[Table("Statistic")]
     public class Statistic
     {
-        [Key]
+		/// <summary>
+		/// Gets or sets the id.
+		/// </summary>
+		[Key]
         public int ID { get; set; }
-        public System.DateTime Date { get; set; }
-        public int Count { get; set; }
+
+		/// <summary>
+		/// Gets or sets the date.
+		/// </summary>
+		public System.DateTime Date { get; set; }
+
+		/// <summary>
+		/// Gets or sets the count.
+		/// </summary>
+		public int Count { get; set; }
     }
 
-    [Table("News")]
+	/// <summary>
+	/// The news.
+	/// </summary>
+	[Table("News")]
     public class News
     {
-        [Key]
+		/// <summary>
+		/// Gets or sets the id.
+		/// </summary>
+		[Key]
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string NewsContent { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
+
+		/// <summary>
+		/// Gets or sets the name.
+		/// </summary>
+		public string Name { get; set; }
+
+		/// <summary>
+		/// Gets or sets the news content.
+		/// </summary>
+		public string NewsContent { get; set; }
+
+		/// <summary>
+		/// Gets or sets the date.
+		/// </summary>
+		public Nullable<System.DateTime> Date { get; set; }
     }
 
-    [Table("MessageStorage")]
+	/// <summary>
+	/// The message storage.
+	/// </summary>
+	[Table("MessageStorage")]
     public class MessageStorage
     {
-        [Key]
+		/// <summary>
+		/// Gets or sets the id.
+		/// </summary>
+		[Key]
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string Data { get; set; }
-        public string MsgOwner { get; set; }
+
+		/// <summary>
+		/// Gets or sets the name.
+		/// </summary>
+		public string Name { get; set; }
+
+		/// <summary>
+		/// Gets or sets the data.
+		/// </summary>
+		public string Data { get; set; }
+
+		/// <summary>
+		/// Gets or sets the msg owner.
+		/// </summary>
+		public string MsgOwner { get; set; }
     }
 }
