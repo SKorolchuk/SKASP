@@ -7,8 +7,14 @@ using SKASP.DOMAIN.Abstract;
 
 namespace SKASP.DOMAIN.Concrete
 {
-    public class ForumRepository : IForumRepository
+    public class EFForumRepository : IForumRepository
     {
+		public EFForumRepository()
+		{
+			
+		}
+
+
         public IForumMessageRepository Messages
         {
             get

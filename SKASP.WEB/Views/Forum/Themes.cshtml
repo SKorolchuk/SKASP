@@ -1,0 +1,18 @@
+﻿@model SKASP.DOMAIN.Abstract.IForumThemeRepository
+
+@{
+	ViewBag.Title = "Forum";
+	Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Forum</h2>
+
+@foreach (var theme in Model.Themes)
+{
+	<p>@theme.Name</p>
+	<p>@theme.Description</p>
+	<p>@theme.Subgroup</p>
+	<p>@theme.Creator</p>
+	<p>@theme.Created_on</p>
+	@Html.ActionLink("Go to " + theme.Name, "Topics", new {id = theme.ID})
+}

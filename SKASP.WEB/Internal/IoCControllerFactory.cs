@@ -34,7 +34,7 @@ namespace SKASP.WEB.Internal
         {
           ninjectKernel.Bind<INewsRepository>().To<EFNewsRepository>();
 					ninjectKernel.Bind<IMessageRepository>().To<MessageRepository>();
-					ninjectKernel.Bind<IForumRepository>().To<ForumRepository>();
+					ninjectKernel.Bind<IForumRepository>().To<EFForumRepository>();
 	        ninjectKernel.Bind<IForumMessageRepository>().To<ForumMessageRepository>();
 	        ninjectKernel.Bind<IForumThemeRepository>().To<ForumThemeRepository>();
 	        ninjectKernel.Bind<IForumTopicRepository>().To<ForumTopicRepository>();

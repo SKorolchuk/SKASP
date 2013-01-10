@@ -53,6 +53,7 @@
     <Compile Include="Abstract\IForumRepository.cs" />
     <Compile Include="Abstract\IForumThemeRepository.cs" />
     <Compile Include="Abstract\IForumTopicRepository.cs" />
+    <Compile Include="Abstract\IImageRepository.cs" />
     <Compile Include="Abstract\IMessageRepository.cs" />
     <Compile Include="Abstract\INewsRepository.cs" />
     <Compile Include="Abstract\ITaskRepository.cs" />

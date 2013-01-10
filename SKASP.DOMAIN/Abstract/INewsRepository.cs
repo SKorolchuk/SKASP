@@ -6,5 +6,8 @@ namespace SKASP.DOMAIN.Abstract
     public interface INewsRepository : ITaskRepository<News>
     {
         IQueryable<News> Updates { get; }
+	    void AddNews(News record);
+	    void RemoveNews(News record);
+	    void EditNews(News record);
     }
 }

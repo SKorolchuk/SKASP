@@ -8,7 +8,9 @@ using System.Web.Security;
 
 namespace SKASP.DOMAIN.EntitiesModel
 {
-    public class UsersContext : DbContext
+	using System.IO;
+
+	public class UsersContext : DbContext
     {
         public UsersContext()
             : base("DefaultConnection")
@@ -27,9 +29,23 @@ namespace SKASP.DOMAIN.EntitiesModel
         public string UserName { get; set; }
     }
 
+	[Table("PictureStorage")]
+	public class Picture
+	{
+		[Key]
+		[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+		public int PictureId { get; set; }
+
+		public byte[] PictureBinary { get; set; }
+		public FileStream ReturnImageFile()
+		{
+			return .Write(PictureBinary, 0, PictureBinary.Length);
+		}
+	}
+
     public class RegisterExternalLoginModel
     {
-        [Required]
+	    [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
