@@ -10,9 +10,9 @@ namespace SKASP.DOMAIN.Abstract
 	 
 		T Get(int id);
 	 
-		bool Post(T Task);
+		bool Post(T value);
 	 
-		T Put(T Task);
+		T Put(T value);
 	 
 		bool Delete(int id);
 	}

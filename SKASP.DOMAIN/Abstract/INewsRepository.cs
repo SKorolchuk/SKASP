@@ -3,7 +3,7 @@ using SKASP.DOMAIN.EntitiesModel;
 
 namespace SKASP.DOMAIN.Abstract
 {
-    public interface INewsRepository : ITaskRepository<News>
+    public interface INewsRepository : ITaskRepository<News>, IManageable<T>
     {
         IQueryable<News> Updates { get; }
 	    void AddNews(News record);

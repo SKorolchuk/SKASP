@@ -9,13 +9,10 @@ namespace SKASP.DOMAIN.Concrete
 {
     public class EFForumRepository : IForumRepository
     {
-		public EFForumRepository()
-		{
-			
-		}
-
-
-        public IForumMessageRepository Messages
+		private DatabaseEntities dataContext = new DatabaseEntities();
+		private UsersContext credentialContext = new UsersContext(); 
+		
+		public IForumMessageRepository Messages
         {
             get
             {

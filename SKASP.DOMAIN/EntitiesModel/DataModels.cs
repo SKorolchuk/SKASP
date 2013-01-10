@@ -21,8 +21,41 @@ namespace SKASP.DOMAIN.EntitiesModel
         public DbSet<Statistic> Statistics { get; set; }
         public DbSet<Theme> Themes { get; set; }
         public DbSet<Topic> Topics { get; set; }
+		public DbSet<Picture> Pictures { get; set; }
+		public DbSet<UserData> UserDataStorage { get; set; }
     }
 
+	[Table("UserData")]
+	public class UserData
+	{
+		[Key]
+		public int UserId { get; set; }
+		public string Name { get; set; }
+		public string SubName { get; set; }
+		public Nullable<System.DateTime> BirthDate { get; set; }
+		public string Interests { get; set; }
+		public string BirthCity { get; set; }
+		public int AvatarId { get; set; } 
+		public Picture GetAvatar(DbSet<Picture> pictures)
+		{
+			return pictures.FirstOrDefault(x => x.PictureId == this.AvatarId);
+		}
+	}
+	
+	[Table("PictureStorage")]
+	public class Picture
+	{
+		[Key]
+		[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+		public int PictureId { get; set; }
+
+		public byte[] PictureBinary { get; set; }
+		public FileStream ReturnImageFile()
+		{
+			return .Write(PictureBinary, 0, PictureBinary.Length);
+		}
+	}
+	
     [Table("Message")]
     public class Message
     {
