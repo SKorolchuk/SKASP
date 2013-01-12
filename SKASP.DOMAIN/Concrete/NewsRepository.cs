@@ -53,7 +53,7 @@ namespace SKASP.DOMAIN.Concrete
 	    {
 		    get
 		    {
-			    throw new System.NotImplementedException();
+			    return context.News;
 		    }
 	    }
 

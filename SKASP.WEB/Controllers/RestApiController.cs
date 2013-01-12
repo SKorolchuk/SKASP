@@ -15,9 +15,9 @@ namespace SKASP.WEB.Controllers
     //TODO: Implement Rest Api for message chat and forum
     public class NewsApiController : ApiController, ITaskRepository<News>
     {
-				private readonly INewsRepository _newsRepository;
- 
-				public NewsApiController(INewsRepository taskRepository)
+				private readonly IManageable<News> _newsRepository;
+
+				public NewsApiController(IManageable<News> taskRepository)
 				{
 					_newsRepository = taskRepository;
 				}

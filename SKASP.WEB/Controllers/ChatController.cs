@@ -7,17 +7,18 @@ using System.Web.Mvc;
 namespace SKASP.WEB.Controllers
 {
     using SKASP.DOMAIN.Abstract;
+    using SKASP.DOMAIN.EntitiesModel;
     using SKASP.DOMAIN.ViewModels;
 
     public class ChatController : Controller
     {
-		private IMessageRepository messages;
+		private IManageable<MessageStorage> messages;
 		private MessageViewModel viewModel;
 		
 		//TODO: change user type from string User class
 		private string user;
-		
-		public ChatController(IMessageRepository repo)
+
+		public ChatController(IManageable<MessageStorage> repo)
 		{
 			messages = repo;
 			viewModel = new MessageViewModel(user);

@@ -14,7 +14,8 @@ namespace SKASP.DOMAIN.Concrete
 	public class ForumThemeRepository : IManageable<Theme>
     {
 		private DatabaseEntities dataContext = new DatabaseEntities();
-		private IQueryable<Theme> Repository
+
+		public IQueryable<Theme> Repository
 		{
 			get
 			{
@@ -37,6 +38,7 @@ namespace SKASP.DOMAIN.Concrete
 			try
 			{
 				this.AddValue(value);
+				return true;
 			}
 			catch (Exception e)
 			{
@@ -64,6 +66,7 @@ namespace SKASP.DOMAIN.Concrete
 			try
 			{
 				this.RemoveValue(Repository.FirstOrDefault(x => x.ID == id));
+				return true;
 			}
 			catch (Exception e)
 			{

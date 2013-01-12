@@ -13,9 +13,9 @@ namespace SKASP.WEB.Controllers
 
 	public class ImageController : Controller
     {
-	    private IImageRepository imageRepository;
+	    private IManageable<Picture> imageRepository;
 
-		public ImageController(IImageRepository repo)
+		public ImageController(IManageable<Picture> repo)
 		{
 			imageRepository = repo;
 		}
@@ -31,7 +31,7 @@ namespace SKASP.WEB.Controllers
 		/// </returns>
 		public ActionResult Get(int id)
         {
-	        Picture pic = imageRepository.Pictures.FirstOrDefault(x => x.PictureId == id);
+	        Picture pic = imageRepository.Repository.FirstOrDefault(x => x.PictureId == id);
             return File(pic.PictureBinary, "image/jpeg");
         }
 
@@ -39,7 +39,8 @@ namespace SKASP.WEB.Controllers
 		[Authorize]
 		public bool Post(Picture pic)
 		{
-			imageRepository.Pictures
+			//imageRepository.Pictures
+			return false;
 		}
 
 		public Picture Put(Picture Task)

@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace SKASP.WEB.Controllers
 {
-    using ReaderEx;
+	using ReaderEx;
 
-    public class RSSController : Controller
+	public class RSSController : Controller
     {
         public Dictionary<string, string> links;
         public List<NewsTrack> Trackers;
@@ -53,25 +53,17 @@ namespace SKASP.WEB.Controllers
                 this.RSSList.Add(string.Format("{0}\n{1}", i.Title, i.Url));
             }
         }
-       /* protected void URL_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("http://news.tut.by/rss/index.rss");
-        }
-        protected void GotoDefaultLabel_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Default.aspx");
-        }
-        protected void RSSList_SelectedIndexChanged(object sender, EventArgs e)
+		protected void RSSList_SelectedIndexChanged(object sender, EventArgs e)
         {
             var link = string.Empty;
             foreach (NewsTrack track in Trackers)
             {
-                foreach (Item i in track.RssChannel.News.Where(i => this.RSSList == i.Title))
+                foreach (Item i in track.RssChannel.News.Where(i => this.RSSList.Contains(i.Title)))
                 {
                     link = i.Url;
                     this.Response.Redirect(link);
                 }
             }
-        }*/
+        }
     }
 }

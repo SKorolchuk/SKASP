@@ -14,9 +14,9 @@ namespace SKASP.WEB.Controllers
     {
         public int PageSize = 4;
 
-        private INewsRepository repo;
+        private IManageable<News> repo;
 
-        public HomeController(INewsRepository repository)
+		public HomeController(IManageable<News> repository)
         {
             repo = repository;
         }
@@ -27,7 +27,7 @@ namespace SKASP.WEB.Controllers
             if (id == "All") return this.View(repo);
             else if (int.TryParse(id, out Id))
             {
-                return this.View("NewsViewer", repo.Updates.Where(x => x.ID == Id).First());
+                return this.View("NewsViewer", this.repo.Repository.First(x => x.ID == Id));
             }
             else
             {

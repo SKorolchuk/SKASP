@@ -1,6 +1,6 @@
 ﻿@using SKASP.DOMAIN
 @using SKASP.DOMAIN.EntitiesModel
-@model SKASP.DOMAIN.Abstract.INewsRepository
+@model SKASP.DOMAIN.Abstract.IManageable<News>
 
 @{
     ViewBag.Title = "Default";
@@ -35,9 +35,9 @@
             <p><a class="btn btn-primary btn-large" href="@Url.Action("About", "Home")">Learn more &raquo;</a></p>
           </div>
 	        <div id="NewsArray" class="label-success well">
-		        You can see @Model.Updates.Count() news on this site!
+		        You can see @Model.Repository.Count() news on this site!
 					</div>
-		        @foreach (News news in Model.Updates)
+		        @foreach (News news in Model.Repository)
 		        {
 			        Html.RenderPartial("News", news);
 		        }

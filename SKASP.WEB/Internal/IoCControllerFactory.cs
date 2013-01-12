@@ -12,7 +12,9 @@ using SKASP.DOMAIN.Concrete;
 
 namespace SKASP.WEB.Internal
 {
-	  /// <summary>
+	using SKASP.DOMAIN.EntitiesModel;
+
+	/// <summary>
     /// The io c controller factory.
     /// </summary>
     public class IoCControllerFactory : DefaultControllerFactory
@@ -32,12 +34,12 @@ namespace SKASP.WEB.Internal
 
         private void AddBindings()
         {
-          ninjectKernel.Bind<INewsRepository>().To<EFNewsRepository>();
-					ninjectKernel.Bind<IMessageRepository>().To<MessageRepository>();
+          ninjectKernel.Bind<IManageable<News>>().To<EFNewsRepository>();
+					//ninjectKernel.Bind<IManageable<MessageStorage>>().To<MessageRepository>();
 					ninjectKernel.Bind<IForumRepository>().To<EFForumRepository>();
-	        ninjectKernel.Bind<IForumMessageRepository>().To<ForumMessageRepository>();
-	        ninjectKernel.Bind<IForumThemeRepository>().To<ForumThemeRepository>();
-	        ninjectKernel.Bind<IForumTopicRepository>().To<ForumTopicRepository>();
+	        ninjectKernel.Bind<IManageable<Message>>().To<ForumMessageRepository>();
+	        ninjectKernel.Bind<IManageable<Theme>>().To<ForumThemeRepository>();
+	        ninjectKernel.Bind<IManageable<Topic>>().To<ForumTopicRepository>();
         }
     }
 }

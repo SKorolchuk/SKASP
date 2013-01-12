@@ -30,6 +30,7 @@ namespace SKASP.DOMAIN.Concrete
 			try
 			{
 				this.AddValue(value);
+				return true;
 			}
 			catch (Exception e)
 			{
@@ -57,6 +58,7 @@ namespace SKASP.DOMAIN.Concrete
 			try
 			{
 				dataContext.Topics.Remove(dataContext.Topics.FirstOrDefault(x => x.ID == id));
+				return true;
 			}
 			catch (Exception e)
 			{
