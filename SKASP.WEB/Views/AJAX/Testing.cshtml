@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Testing";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<script type="text/javascript" src="../../Scripts/CustomScripts/AJAX.js"></script>
+<h2>Testing</h2>
+<p>AJAX Testing</p>
+<div id="contentForGetLoad">You can see get data there...</div>
+<div id="contentForPostLoad">You can see post data there...</div>
+<input type="text" value="Enter message for post there..." id="PostText"/>
+<input type="button" value="Press To Load Data" id="LoadBtn" onclick="loader.Load('contentForGetLoad', '/AJAX/Index/');"/>
+<input type="button" value="Press To Send Data and Receive postback" onclick="loader.Send('contentForPostLoad', '/AJAX/Index/', $('PostText').value);"/>

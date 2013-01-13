@@ -183,6 +183,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountManagerController.cs" />
+    <Compile Include="Controllers\AJAXController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -215,6 +216,8 @@
     <Content Include="Internal\ReaderEx.dll" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\CustomScripts\AJAX.js" />
+    <Content Include="Scripts\CustomScripts\jQueryPractise.js" />
     <Content Include="Scripts\CustomScripts\PersonClass.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />
@@ -261,6 +264,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Forum\Themes.cshtml" />
     <Content Include="Views\Forum\Topics.cshtml" />
+    <Content Include="Views\AJAX\Testing.cshtml" />
+    <Content Include="Views\AJAX\Jquery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
