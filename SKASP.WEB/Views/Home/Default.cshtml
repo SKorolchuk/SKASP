@@ -1,5 +1,6 @@
 ﻿@using SKASP.DOMAIN
 @using SKASP.DOMAIN.EntitiesModel
+@using SKASP.HELPERS
 @model SKASP.DOMAIN.Abstract.IManageable<News>
 
 @{
@@ -37,9 +38,12 @@
 	        <div id="NewsArray" class="label-success well">
 		        You can see @Model.Repository.Count() news on this site!
 					</div>
-		        @foreach (News news in Model.Repository)
+		        @foreach (News news in Model.Repository.OrderByDescending(x => x.Date))
 		        {
-			        Html.RenderPartial("News", news);
+			        @Html.NewsViewer(news)
 		        }
+			        <!--Html.RenderPartial("News", news);	-->
+			        
+		        
 	        </div><!--/span-->
 </div><!--/row-->
