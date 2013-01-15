@@ -25,6 +25,7 @@ namespace SKASP.WEB.Internal
         {
             ninjectKernel = new StandardKernel();
             AddBindings();
+			
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
@@ -34,9 +35,9 @@ namespace SKASP.WEB.Internal
 
         private void AddBindings()
         {
-          ninjectKernel.Bind<IManageable<News>>().To<EFNewsRepository>();
-					//ninjectKernel.Bind<IManageable<MessageStorage>>().To<MessageRepository>();
-					ninjectKernel.Bind<IForumRepository>().To<EFForumRepository>();
+			ninjectKernel.Bind<IManageable<News>>().To<EFNewsRepository>();
+			ninjectKernel.Bind<IManageable<MessageStorage>>().To<MessageRepository>();
+			ninjectKernel.Bind<IForumRepository>().To<EFForumRepository>();
 	        ninjectKernel.Bind<IManageable<Message>>().To<ForumMessageRepository>();
 	        ninjectKernel.Bind<IManageable<Theme>>().To<ForumThemeRepository>();
 	        ninjectKernel.Bind<IManageable<Topic>>().To<ForumTopicRepository>();

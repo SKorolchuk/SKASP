@@ -7,54 +7,68 @@ using SKASP.DOMAIN.Abstract;
 
 namespace SKASP.DOMAIN.Concrete
 {
-    public class MessageRepository : IManageable<MessageRepository>
+	using SKASP.DOMAIN.EntitiesModel;
+
+	public class MessageRepository : IManageable<MessageStorage>
     {
-	    public IEnumerable<MessageRepository> Get()
-	    {
-		    throw new NotImplementedException();
-	    }
+		private DatabaseEntities dataContext = new DatabaseEntities();
 
-	    public MessageRepository Get(int id)
-	    {
-		    throw new NotImplementedException();
-	    }
+		public IQueryable<MessageStorage> Repository
+		{
+			get { return dataContext.MessageStorages; }
+		}
 
-	    public bool Post(MessageRepository value)
-	    {
-		    throw new NotImplementedException();
-	    }
+		public void AddValue(MessageStorage record)
+		{
+			if (this.dataContext.MessageStorages.Count(x => x.ID == record.ID) == 0)
+			{
+				dataContext.MessageStorages.Add(record);
+				dataContext.SaveChanges();
+			}
+		}
 
-	    public MessageRepository Put(MessageRepository value)
-	    {
-		    throw new NotImplementedException();
-	    }
+		public void RemoveValue(MessageStorage record)
+		{
+			if (this.dataContext.MessageStorages.Count(x => x.ID == record.ID) > 0)
+			{
+				dataContext.MessageStorages.Remove(record);
+				dataContext.SaveChanges();
+			}
+		}
 
-	    public bool Delete(int id)
-	    {
-		    throw new NotImplementedException();
-	    }
+		public void EditValue(MessageStorage record)
+		{
+			if (this.dataContext.MessageStorages.Count(x => x.ID == record.ID) > 0)
+			{
+				dataContext.MessageStorages.Remove(dataContext.MessageStorages.FirstOrDefault(x => x.ID == record.ID));
+				dataContext.MessageStorages.Add(record);
+				dataContext.SaveChanges();
+			}
+		}
 
-	    public IQueryable<MessageRepository> Repository
-	    {
-		    get
-		    {
-			    throw new NotImplementedException();
-		    }
-	    }
+		public IEnumerable<MessageStorage> Get()
+		{
+			throw new NotImplementedException();
+		}
 
-	    public void AddValue(MessageRepository record)
-	    {
-		    throw new NotImplementedException();
-	    }
+		public MessageStorage Get(int id)
+		{
+			throw new NotImplementedException();
+		}
 
-	    public void RemoveValue(MessageRepository record)
-	    {
-		    throw new NotImplementedException();
-	    }
+		public bool Post(MessageStorage value)
+		{
+			throw new NotImplementedException();
+		}
 
-	    public void EditValue(MessageRepository record)
-	    {
-		    throw new NotImplementedException();
-	    }
+		public MessageStorage Put(MessageStorage value)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool Delete(int id)
+		{
+			throw new NotImplementedException();
+		}
     }
 }
