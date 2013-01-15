@@ -28,23 +28,20 @@
           </a>
           <a class="brand" href="#">Dot NET Practise</a>
           <div class="btn-group pull-right">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="icon-user"></i>
-	            <span id="login_status">
-		            @if (!Request.IsAuthenticated)
-		            {
-			            @Html.Raw("You are not loggined now");
-		            }
-		            else
-		            {
-			            Html.Raw("Hello, ");
-			            Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" });
-			            Html.Raw("!");
-		            }
-	            </span>
-              <span class="caret"></span>
-            </a>
-	          <ul class="dropdown-menu">
+	          <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+		           @if (!Request.IsAuthenticated)
+		           {
+			           @Html.Raw("You are not loggined now")
+			           ;
+		           }
+		           else
+		           {
+			           @Html.Raw(string.Format("Logined as {0}", User.Identity.Name))
+		           }
+		          <i class="icon-user"></i>
+		          <span class="caret"></span>
+	          </a>
+	          <ul class="dropdown-menu" style="padding: 20px; width: 150px;">
 		          <li>@Html.Partial("_LoginPartial")</li>
 	          </ul>
           </div>
