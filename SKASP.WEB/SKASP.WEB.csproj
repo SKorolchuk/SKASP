@@ -279,6 +279,10 @@
       <Project>{b9fe499b-207d-4996-9d1c-165b6a7cc27c}</Project>
       <Name>SKASP.DOMAIN</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SKASP.HELPERS\SKASP.HELPERS.csproj">
+      <Project>{f59a35d8-b059-4f6e-8b45-bf2df293421c}</Project>
+      <Name>SKASP.HELPERS</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

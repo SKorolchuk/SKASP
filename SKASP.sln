@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKASP.TEST", "SKASP.TEST\SK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKASP.DOMAIN", "SKASP.DOMAIN\SKASP.DOMAIN.csproj", "{B9FE499B-207D-4996-9D1C-165B6A7CC27C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKASP.HELPERS", "SKASP.HELPERS\SKASP.HELPERS.csproj", "{F59A35D8-B059-4F6E-8B45-BF2DF293421C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{B9FE499B-207D-4996-9D1C-165B6A7CC27C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9FE499B-207D-4996-9D1C-165B6A7CC27C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9FE499B-207D-4996-9D1C-165B6A7CC27C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F59A35D8-B059-4F6E-8B45-BF2DF293421C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F59A35D8-B059-4F6E-8B45-BF2DF293421C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F59A35D8-B059-4F6E-8B45-BF2DF293421C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F59A35D8-B059-4F6E-8B45-BF2DF293421C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
