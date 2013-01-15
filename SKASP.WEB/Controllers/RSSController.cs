@@ -8,25 +8,47 @@ namespace SKASP.WEB.Controllers
 {
 	using ReaderEx;
 
+	/// <summary>
+	/// The rss controller.
+	/// </summary>
 	public class RSSController : Controller
     {
-        public Dictionary<string, string> links;
-        public List<NewsTrack> Trackers;
+		/// <summary>
+		/// The links.
+		/// </summary>
+		private Dictionary<string, string> links;
 
-        public List<string> RSSList; 
-        
-        public ViewResult Rss(string FeedUrl = "tut")
+		/// <summary>
+		/// The trackers.
+		/// </summary>
+		private List<NewsTrack> trackers;
+
+		/// <summary>
+		/// The current tracker.
+		/// </summary>
+		private NewsTrack currentTracker;
+
+		/// <summary>
+		/// The rss.
+		/// </summary>
+		/// <param name="feedUrl">
+		/// The feed url.
+		/// </param>
+		/// <returns>
+		/// The <see cref="ViewResult"/>.
+		/// </returns>
+		public ViewResult Rss(string feedUrl = "tut")
         {
-            links = new Dictionary<string, string>();
-            RSSList = new List<string>();
-            links.Add("tut", "http://news.tut.by/rss/index.rss");
-            links.Add("habr", "http://habrahabr.ru/rss/best/");
-            links.Add("it_tut", "http://news.tut.by/rss/it/all.rss");
-            string link = string.Empty;
-            Trackers = new List<NewsTrack>();
-            RSSList.Clear();
-            Trackers.Clear();
-            switch (FeedUrl)
+            links = new Dictionary<string, string>
+	                    {
+		                    { "tut", "http://news.tut.by/rss/index.rss" },
+		                    { "habr", "http://habrahabr.ru/rss/hubs/" },
+		                    { "it_tut", "http://it.tut.by/rss" }
+	                    };
+			string link = string.Empty;
+            trackers = new List<NewsTrack>();
+            trackers.Clear();
+            switch (feedUrl)
             {
                 case "tut":
                     link = links["tut"];
@@ -38,32 +60,32 @@ namespace SKASP.WEB.Controllers
                     link = links["it_tut"];
                     break;
             }
-            if (link != string.Empty) LoadChannel(link);
-            return this.View(RSSList);
+
+            if (link != string.Empty)
+            {
+	            currentTracker = LoadChannel(link);
+				return this.View(currentTracker);
+            }
+	        return this.View();
         }
 
-        [NonAction]
-        private void LoadChannel(string Path)
+		/// <summary>
+		/// The load channel.
+		/// </summary>
+		/// <param name="path">
+		/// The path.
+		/// </param>
+		/// <returns>
+		/// The <see cref="NewsTrack"/>.
+		/// </returns>
+		[NonAction]
+        private NewsTrack LoadChannel(string path)
         {
-            NewsTrack tracker = new NewsTrack(Path);
-            Trackers.Add(tracker);
+			trackers.Clear();
+            NewsTrack tracker = new NewsTrack(path);
+            trackers.Add(tracker);
             tracker.Name = tracker.RssChannel.Title;
-            foreach (var i in from s in tracker.RssChannel.News select new { Title = s.Title, Url = s.Url })
-            {
-                this.RSSList.Add(string.Format("{0}\n{1}", i.Title, i.Url));
-            }
-        }
-		protected void RSSList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var link = string.Empty;
-            foreach (NewsTrack track in Trackers)
-            {
-                foreach (Item i in track.RssChannel.News.Where(i => this.RSSList.Contains(i.Title)))
-                {
-                    link = i.Url;
-                    this.Response.Redirect(link);
-                }
-            }
+	        return tracker;
         }
     }
 }

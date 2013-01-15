@@ -1,40 +1,53 @@
 ﻿@{
-    ViewBag.Title = "Rss";
-    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+	ViewBag.Title = "Rss";
+	Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-@model List<string>
+@model NewsTrack
 @using ReaderEx
 
-    <script type="text/javascript">
-        function gotonews() {
-            document.getElementById('NewsFrame').src = document.getElementById('Content_RSSList').value.split('\n')[1];
-        }
-        function LoadRss() {
-            
-        }
-    </script>
-    <div class="pagination pagination-centered">
-    <a id="TuTUrl" href="RSS/Rss/tut" style="background: #ffffff;">TuT.by</a>
-    <a id="HabraUrl" href="RSS/Rss/habra"  style="background: #ffffff;">Habr</a>
-    <a id="ItUrl" href="RSS/Rss/it_tut" style="background: #ffffff;">It.TuT.by</a>
-    </div>
-    <div>
-        <select id="RssFeed" class="RssFeedList" style="background: royalblue; width: 100%">
-            @foreach (string s in Model)
-            {
-                <option>@s</option>
-            }
-        </select>
-    </div>
-    <div align="center" style="height: 35px">
-         <input class="btn btn-primary btn-large" type="button" value="Go To News" id="newsGoToBtn" onclick="gotonews();"/>
-    </div> 
-    <br/>
-    <iframe id="NewsFrame" src="" scrolling="auto" class="span11" style="margin-left: 0px; height: 700px;"/>
+<script type="text/javascript">
+	function GoToNews(e) {
+		var url = e.value;
+		document.getElementById('NewsFrame').src = url;
+	}
+	function LoadRss() {}
+</script>
 
-
-      
-
-     
-      
-
+<div class="pagination pagination-centered">
+	<a id="TuTUrl" href="RSS/Rss/tut" style="background: #ffffff;" onclick="">TuT.by</a>
+	<a id="HabraUrl" href="RSS/Rss/habra"  style="background: #ffffff;">Habr</a>
+	<a id="ItUrl" href="RSS/Rss/it_tut" style="background: #ffffff;">It.TuT.by</a>
+</div>
+<div class="hero-unit">
+	<div class="help-block" style="background-color: #808080; padding: 10px; border-radius: 10px;">
+		<div id="ChannelTitleDiv" class="label label-success" style="font-size: 23px; padding: 10px;">News Title: @Model.Name</div>
+		<br/>
+		<div id="ChannelDescrDiv" class="well well-large">Description: @Html.Raw(Model.RssChannel.Description)</div>
+		<br/>
+		<div id="ChannelTimeDiv" class="label">Published Date: @Convert.ToDateTime(Model.RssChannel.PubTime).ToString("MM-dd-yyyy")</div>
+		<div id="ChannelsLangDiv" class="label">@Model.RssChannel.Language</div>
+		<br/>
+		<a id="ChannelsUrl" class="btn btn-primary btn-large" href="@Model.RssChannel.Url">Go To Channel</a>
+		<br />
+	</div>
+	@{
+		var counter = 0;
+	}
+	@foreach (Item entry in Model.RssChannel.News)
+	{
+		<div class="help-block" style="background-color: #808080; padding: 10px; border-radius: 10px;">
+			<div id="NewsTitleDiv@counter" class="label label-success" style="font-size: 23px; padding: 10px;">News Title: @entry.Title</div>
+			<br/>
+			<div id="NewsDescrDiv@counter" class="well well-large">Description: @Html.Raw(entry.Description)</div>
+			<br/>
+			<div id="NewsTimeDiv@counter" class="label">Published Date: @Convert.ToDateTime(entry.PubTime).ToString("MM-dd-yyyy")</div>
+			<br/>
+			<div id="NewsCategoryDiv@counter" class="label">Category: @entry.Category</div>
+			<br/>
+			<a id="NewsUrlBtn@counter" class="btn btn-primary btn-large" href="@entry.Url">Go To Topic</a>
+			<br/>
+		</div>
+		counter++;
+	}
+	<br/>
+</div>
