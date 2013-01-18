@@ -12,6 +12,8 @@ using SKASP.DOMAIN.EntitiesModel;
 
 namespace SKASP.DOMAIN.ViewModels
 {
+	using System;
+
 	/// <summary>
 	/// The message view model.
 	/// </summary>
@@ -43,6 +45,21 @@ namespace SKASP.DOMAIN.ViewModels
 		{
             CurrrentMessage = new MessageStorage();
 			CurrentUser = user;
+		}
+
+		/// <summary>
+		/// The reload current message.
+		/// </summary>
+		/// <param name="user">
+		/// The user.
+		/// </param>
+		public void ReloadCurrentMessage()
+		{
+			this.CurrrentMessage = new MessageStorage()
+				                       {
+					                       ID = (new Random((int)DateTime.Now.Ticks)).Next(int.MinValue, int.MaxValue),
+										   MsgOwner = CurrentUser
+				                       };
 		}
 	}
 }

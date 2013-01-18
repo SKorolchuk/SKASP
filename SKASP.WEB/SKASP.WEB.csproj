@@ -212,6 +212,7 @@
     <Content Include="Content\images\icons\feed-icon-16x16.png" />
     <Content Include="Content\images\icons\info.ico" />
     <Content Include="Global.asax" />
+    <None Include="Properties\PublishProfiles\Home Pub.pubxml" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="Internal\ReaderEx.dll" />
     <Content Include="Scripts\bootstrap.js" />
@@ -266,6 +267,8 @@
     <Content Include="Views\Forum\Topics.cshtml" />
     <Content Include="Views\AJAX\Testing.cshtml" />
     <Content Include="Views\AJAX\Jquery.cshtml" />
+    <Content Include="Views\Chat\_MessageViewer.cshtml" />
+    <Content Include="Views\Chat\SendMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

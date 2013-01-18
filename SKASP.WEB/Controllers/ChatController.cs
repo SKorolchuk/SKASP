@@ -10,31 +10,49 @@ namespace SKASP.WEB.Controllers
     using SKASP.DOMAIN.EntitiesModel;
     using SKASP.DOMAIN.ViewModels;
 
+	[Authorize]
     public class ChatController : Controller
     {
 		private IManageable<MessageStorage> messages;
 		private MessageViewModel viewModel;
 		
 		//TODO: change user type from string User class
-		private string user;
 
 		public ChatController(IManageable<MessageStorage> repo)
 		{
 			messages = repo;
-			viewModel = new MessageViewModel(user);
-			viewModel.MessageRepo = messages;			
+			viewModel = new MessageViewModel();
+			viewModel.MessageRepo = messages;
+			viewModel.ReloadCurrentMessage();
+			if (User != null &&	User.Identity.IsAuthenticated)
+			{
+				viewModel.CurrentUser = User.Identity.Name;
+			}
+			else
+			{
+				RedirectToAction("Login", "Account");
+			}
 		}
 		
-        public ViewResult Chat(string user = "")
-        {
+		[HttpGet]
+		public ViewResult Chat()
+		{
+			viewModel.CurrentUser = User.Identity.Name;
             return this.View(viewModel);
         }
 		
 		[HttpPost]
-		public ViewResult Chat(MessageViewModel view)
+		public ViewResult Chat(MessageStorage msg)
         {
 			//TODO: realize post-redirect-get pattern here (MsgOwner == CurrentUser)
-            return this.View(view);
+			messages.AddValue(msg);
+			viewModel.ReloadCurrentMessage();
+            return this.View(viewModel);
         }
+
+		public ActionResult SendMessage(MessageStorage msg)
+		{
+			return this.View(msg);
+		}
     }
 }

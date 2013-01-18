@@ -7,30 +7,16 @@
 
 <link href="@Url.Content("../../Styles/Chat.css")" rel="stylesheet"/>
 <div align="center" style="font-family: Calibri">
-    @Html.BeginForm(/* Action bindings */){
-		<div align="center" style="font-family: Calibri">
-			<p ID="NameLbl" style="color: White;">User Name</p>
-			<input type="text" ID="NameTxtBox" style="Width: 627px;" value="@Model.CurrentUser"/>
-			<p ID="NameLbl" style="color: White;">Name</p>
-			<input type="text" ID="NameTxtBox" style="Width: 627px;" value="@Model.CurrrentMessage.Name"/>
-			<!-- Realize bindings to model -->
-			<p ID="MessageLbl" style="color: White;">Message</p>
-			<input type="text" ID="MessageTxtBox" style="width: 1026px;" value="@Model.CurrrentMessage.Data"/>
-		</div>
-		<div align="center">
-			<input type="button" ID="SendMessageBtn" value="Send Message" OnClick="" CssClass="btn btn-primary btn-large" action="submit"/>
-		</div>
-	}
-    <br/>
-    <div align="center" style="font-family: Calibri">
-        <br/>
-        <select ID="ListBox1" style="height: 103px; width: 1095px;"></select>
-		@foreach(MessageStorage msg in Model.MessageRepo.Messages)
+	@Html.Partial("SendMessage", Model.CurrrentMessage)
+	<br/>
+	<div align="center" style="font-family: Calibri">
+        
+		@foreach (MessageStorage msg in Model.MessageRepo.Repository)
 		{
-			Html.RenderPartial(/* render MessageViewer partial view */);
+			Html.RenderPartial("_MessageViewer", msg);
 		}
-    </div>
-    <br/>
-    <input type="button" ID="ReturnBtn" value="Return to Main Page" CssClass="btn btn-primary btn-large" />
-    <br/>    
+	</div>
+	<br/>
+	<input type="button" ID="ReturnBtn" value="Return to Main Page" CssClass="btn btn-primary btn-large" />
+	<br/>    
 </div>

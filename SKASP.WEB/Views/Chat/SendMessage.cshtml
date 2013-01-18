@@ -1,0 +1,16 @@
+﻿@model SKASP.DOMAIN.EntitiesModel.MessageStorage
+
+@using (Html.BeginForm("Chat", "Chat", FormMethod.Post)){
+			 <div align="center" style="font-family: Calibri">
+				@Html.HiddenFor(x => x.ID)
+				<p style="color: White;">User Name</p>
+				@Html.DisplayTextFor(x => x.MsgOwner)
+				<p style="color: White;">Name</p>
+				@Html.EditorFor(x => x.Name)
+				 <p style="color: White;">Message</p>
+				@Html.EditorFor(x => x.Data)
+			</div>
+			<div align="center">
+				<input type="submit" ID="SendMessageBtn" value="Send Message"	class="btn btn-primary btn-large"/>
+			</div>
+		}

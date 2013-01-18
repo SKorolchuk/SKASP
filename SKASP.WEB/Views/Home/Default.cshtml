@@ -37,7 +37,7 @@
           </div>
 	        <div id="NewsArray" class="label-success well">
 		        You can see @Model.Repository.Count() news on this site!
-					</div>
+			</div>
 		        @foreach (News news in Model.Repository.OrderByDescending(x => x.Date))
 		        {
 			        @Html.NewsViewer(news)
