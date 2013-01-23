@@ -195,6 +195,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Internal\IoCControllerFactory.cs" />
+    <Compile Include="Internal\NinjectDependencyResolver.cs" />
+    <Compile Include="Internal\NinjectDependencyScope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -268,7 +270,6 @@
     <Content Include="Views\AJAX\Testing.cshtml" />
     <Content Include="Views\AJAX\Jquery.cshtml" />
     <Content Include="Views\Chat\_MessageViewer.cshtml" />
-    <Content Include="Views\Chat\SendMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

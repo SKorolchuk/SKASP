@@ -7,7 +7,22 @@
 
 <link href="@Url.Content("../../Styles/Chat.css")" rel="stylesheet"/>
 <div align="center" style="font-family: Calibri">
-	@Html.Partial("SendMessage", Model.CurrrentMessage)
+	@using (Html.BeginForm("PostChat", "Chat", FormMethod.Post)){
+		<div align="center" style="font-family: Calibri">
+			@Html.Hidden("ID", Model.CurrrentMessage.ID)
+			<p style="color: White;">User Name</p>
+			@Html.Display("MsgOwner", Model.CurrrentMessage.MsgOwner)
+			<p style="color: White;">Name</p>
+			@Html.Editor("Name", Model.CurrrentMessage.Name)
+			<p style="color: White;">Message</p>
+			@Html.Editor("Data", Model.CurrrentMessage.Data)
+		</div>
+			<div align="center">
+				<input type="submit" ID="SendMessageBtn" value="Send Message"	class="btn btn-primary btn-large"/>
+			</div>
+		}
+
+
 	<br/>
 	<div align="center" style="font-family: Calibri">
         

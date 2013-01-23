@@ -9,6 +9,7 @@
 
 using SKASP.DOMAIN.Abstract;
 using SKASP.DOMAIN.EntitiesModel;
+using System.Linq;
 
 namespace SKASP.DOMAIN.ViewModels
 {
@@ -43,22 +44,19 @@ namespace SKASP.DOMAIN.ViewModels
 		/// </param>
 		public MessageViewModel(string user = "")
 		{
-            CurrrentMessage = new MessageStorage();
+            		CurrrentMessage = new MessageStorage(){MsgOwner = user};
 			CurrentUser = user;
 		}
 
 		/// <summary>
 		/// The reload current message.
 		/// </summary>
-		/// <param name="user">
-		/// The user.
-		/// </param>
 		public void ReloadCurrentMessage()
 		{
 			this.CurrrentMessage = new MessageStorage()
 				                       {
-					                       ID = (new Random((int)DateTime.Now.Ticks)).Next(int.MinValue, int.MaxValue),
-										   MsgOwner = CurrentUser
+					                       ID = this.MessageRepo.Repository.Max(x => x.ID) + 1,
+										   MsgOwner = this.CurrentUser
 				                       };
 		}
 	}

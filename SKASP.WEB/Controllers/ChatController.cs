@@ -10,49 +10,39 @@ namespace SKASP.WEB.Controllers
     using SKASP.DOMAIN.EntitiesModel;
     using SKASP.DOMAIN.ViewModels;
 
-	[Authorize]
     public class ChatController : Controller
     {
-		private IManageable<MessageStorage> messages;
-		private MessageViewModel viewModel;
+		private static IManageable<MessageStorage> messages;
+		private static MessageViewModel viewModel = new MessageViewModel();
 		
 		//TODO: change user type from string User class
-
 		public ChatController(IManageable<MessageStorage> repo)
 		{
 			messages = repo;
-			viewModel = new MessageViewModel();
+			viewModel.CurrentUser = (User != null ? User.Identity.Name : "");
 			viewModel.MessageRepo = messages;
 			viewModel.ReloadCurrentMessage();
-			if (User != null &&	User.Identity.IsAuthenticated)
-			{
-				viewModel.CurrentUser = User.Identity.Name;
-			}
-			else
-			{
-				RedirectToAction("Login", "Account");
-			}
 		}
+
+		public ChatController(){}
 		
-		[HttpGet]
+		[Authorize]
+		[System.Web.Mvc.HttpGet]
 		public ViewResult Chat()
 		{
 			viewModel.CurrentUser = User.Identity.Name;
+			viewModel.ReloadCurrentMessage();
             return this.View(viewModel);
         }
 		
-		[HttpPost]
-		public ViewResult Chat(MessageStorage msg)
+		[Authorize]
+		[System.Web.Mvc.HttpPost]
+		public RedirectToRouteResult PostChat(MessageStorage msg)
         {
 			//TODO: realize post-redirect-get pattern here (MsgOwner == CurrentUser)
 			messages.AddValue(msg);
 			viewModel.ReloadCurrentMessage();
-            return this.View(viewModel);
+			return RedirectToAction("Chat");
         }
-
-		public ActionResult SendMessage(MessageStorage msg)
-		{
-			return this.View(msg);
-		}
     }
 }
