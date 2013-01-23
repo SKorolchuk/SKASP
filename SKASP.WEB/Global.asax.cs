@@ -27,7 +27,8 @@ namespace SKASP.WEB
             BootstrapBundleConfig.RegisterBundles();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
-            ControllerBuilder.Current.SetControllerFactory(new IoCControllerFactory());
+	    var kernel = new IoCControllerKernel();
+	    DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel.ninjectKernel));
         }
     }
 }

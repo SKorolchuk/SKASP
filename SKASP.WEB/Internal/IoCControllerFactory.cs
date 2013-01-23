@@ -17,30 +17,25 @@ namespace SKASP.WEB.Internal
 	/// <summary>
     /// The io c controller factory.
     /// </summary>
-    public class IoCControllerFactory : DefaultControllerFactory
+    public class IoCControllerKernel
     {
-        private IKernel ninjectKernel;
+        internal readonly IKernel ninjectKernel;
 
-        public IoCControllerFactory()
+		public IoCControllerKernel()
         {
             ninjectKernel = new StandardKernel();
             AddBindings();
 			
         }
 
-        protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
-        {
-            return controllerType == null ? null : (IController)ninjectKernel.Get(controllerType);
-        }
-
         private void AddBindings()
         {
-			ninjectKernel.Bind<IManageable<News>>().To<EFNewsRepository>();
-			ninjectKernel.Bind<IManageable<MessageStorage>>().To<MessageRepository>();
-			ninjectKernel.Bind<IForumRepository>().To<EFForumRepository>();
-	        ninjectKernel.Bind<IManageable<Message>>().To<ForumMessageRepository>();
-	        ninjectKernel.Bind<IManageable<Theme>>().To<ForumThemeRepository>();
-	        ninjectKernel.Bind<IManageable<Topic>>().To<ForumTopicRepository>();
+			ninjectKernel.Bind<IManageable<News>>().To<EFNewsRepository>().InSingletonScope();
+			ninjectKernel.Bind<IManageable<MessageStorage>>().To<MessageRepository>().InSingletonScope();
+			ninjectKernel.Bind<IForumRepository>().To<EFForumRepository>().InSingletonScope();
+	        ninjectKernel.Bind<IManageable<Message>>().To<ForumMessageRepository>().InSingletonScope();
+	        ninjectKernel.Bind<IManageable<Theme>>().To<ForumThemeRepository>().InSingletonScope();
+	        ninjectKernel.Bind<IManageable<Topic>>().To<ForumTopicRepository>().InSingletonScope();
         }
     }
 }
