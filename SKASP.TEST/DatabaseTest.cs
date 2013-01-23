@@ -26,6 +26,35 @@ namespace dotNETPractiseWEBMVC4.Tests
             }
         }
 
+	    /// <summary>
+	    /// The test news and usr tbl writing.
+	    /// </summary>
+	    [TestMethod]
+		public void TestNewsAndUsrTblWriting()
+		{
+			using (DatabaseEntities context = new DatabaseEntities())
+			{
+				News entity = new News { Date = DateTime.Now, ID = 123456, Name = "Hello", NewsContent = "World" };
+				context.News.Add(entity);
+				context.SaveChanges();
+				context.News.Remove(entity);
+				context.SaveChanges();
+			}
+		}
+
+		[TestMethod]
+		public void TestMessageStorageRepoWriting()
+		{
+			using (DatabaseEntities context = new DatabaseEntities())
+			{
+				MessageStorage message = new MessageStorage { ID = 100000, MsgOwner = "Srg", Data = "Hello", Name = "World" };
+				context.MessageStorages.Add(message);
+				context.SaveChanges();
+				context.MessageStorages.Remove(message);
+				context.SaveChanges();
+			}
+		}
+
         /// <summary>
         /// The test forum functionality.
         /// </summary>
@@ -34,7 +63,8 @@ namespace dotNETPractiseWEBMVC4.Tests
         {
             using (DatabaseEntities context = new DatabaseEntities())
             {
-                context.News.Add(new News{Date = DateTime.Now, ID = 3456, Name = "Test", NewsContent = "Testing"});
+	            News newsItm = new News { Date = DateTime.Now, ID = 356, Name = "Test", NewsContent = "Testing" };
+                context.News.Add(newsItm);
                 Theme newTheme = new Theme
                 {
                     Created_on = DateTime.Now,
@@ -68,6 +98,7 @@ namespace dotNETPractiseWEBMVC4.Tests
                 context.Themes.Remove(newTheme);
                 context.Topics.Remove(newTopic);
                 context.Messages.Remove(newMessage);
+	            context.News.Remove(newsItm);
                 context.SaveChanges();
             }
         }

@@ -70,7 +70,8 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// Gets or sets the user id.
 		/// </summary>
 		[Key]
-		public int UserId { get; set; }
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
+		public Int64 UserId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.
@@ -128,7 +129,7 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// </summary>
 		[Key]
 		[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-		public int PictureId { get; set; }
+		public Int64 PictureId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the picture binary.
@@ -139,14 +140,15 @@ namespace SKASP.DOMAIN.EntitiesModel
 	/// <summary>
 	/// The message.
 	/// </summary>
-	[Table("Message")]
+	[Table("Messages")]
     public class Message
     {
 		/// <summary>
 		/// Gets or sets the id.
 		/// </summary>
 		[Key]
-        public int ID { get; set; }
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
+		public Int64 ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the creator.
@@ -156,7 +158,7 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// <summary>
 		/// Gets or sets the topic.
 		/// </summary>
-		public int Topic { get; set; }
+		public long Topic { get; set; }
 
 		/// <summary>
 		/// Gets or sets the text.
@@ -172,14 +174,15 @@ namespace SKASP.DOMAIN.EntitiesModel
 	/// <summary>
 	/// The topic.
 	/// </summary>
-	[Table("Topic")]
+	[Table("Topics")]
     public class Topic
     {
 		/// <summary>
 		/// Gets or sets the id.
 		/// </summary>
 		[Key]
-        public int ID { get; set; }
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
+		public Int64 ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.
@@ -204,20 +207,21 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// <summary>
 		/// Gets or sets the theme.
 		/// </summary>
-		public int Theme { get; set; }
+		public long Theme { get; set; }
     }
 
 	/// <summary>
 	/// The theme.
 	/// </summary>
-	[Table("Theme")]
+	[Table("Themes")]
     public class Theme
     {
 		/// <summary>
 		/// Gets or sets the id.
 		/// </summary>
 		[Key]
-        public int ID { get; set; }
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
+		public Int64 ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.
@@ -248,14 +252,15 @@ namespace SKASP.DOMAIN.EntitiesModel
 	/// <summary>
 	/// The statistic.
 	/// </summary>
-	[Table("Statistic")]
+	[Table("Statistics")]
     public class Statistic
     {
 		/// <summary>
 		/// Gets or sets the id.
 		/// </summary>
 		[Key]
-        public int ID { get; set; }
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
+		public Int64 ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date.
@@ -278,7 +283,8 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// Gets or sets the id.
 		/// </summary>
 		[Key]
-        public int ID { get; set; }
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
+		public Int64 ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.
@@ -306,7 +312,8 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// Gets or sets the id.
 		/// </summary>
 		[Key]
-        public int ID { get; set; }
+		[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public Int64 ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.
