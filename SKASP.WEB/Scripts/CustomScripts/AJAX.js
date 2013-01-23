@@ -1,38 +1,56 @@
-﻿var JSONLoader = Class.create();
-
-JSONLoader.prototype = {
-	initialize: function() {
-		this.data = {};
+﻿var JSONLoader = Class.create({
+	initialize: function(post, callback) {
+		PostData = post;
+		Callback = callback;
+		self = this;
 	},
-	Load: function(divId, url) {
-		var divElement = $(divId);
+	Load: function(url, callback) {
+		if (callback) Callback = callback;
 		var Request = new Ajax.Request(url, {
 			method: "GET",
 			onSuccess: function(json) {
-				var data = json.responseText.evalJSON();
-				var name = data.Name;
-				var description = data.NewsContent;
-				var date = new Date(parseInt(data.Date.replace(/\/Date\((-?\d+)\)\//, '$1')));
-				divElement.innerHTML = '<p>' + name + '</p><p>' + description + '</p><p>' + date.toDateString() + '</p>';
+				RecievedData = json.responseText.evalJSON(true);
+				Callback(RecievedData);
+			}
+			onFailure: function(){
+				alert('Failed to get requested data');
 			}
 		});
 	},
-	Send: function(divId, url, message) {
-		var divElement = $(divId);
+	Send: function(url, post, callback) {
+		if (callback) Callback = callback;
+		if (post) PostData = post;
 		var Request = new Ajax.Request(url, {
 			method: "POST",
 			parameters: {
-				message: message
+				data: PostData
 			},
 			onSuccess: function(json) {
-				var data = json.responseText.evalJSON(true);
-				var name = data.Name;
-				var description = data.NewsContent;
-				var date = new Date(data.Date.replace(/\/Date\((-?\d+)\)\//, '$1'));
-				divElement.innerHTML = '<p>' + name + '</p><p>' + description + '</p><p>' + date + '</p>';
+				RecievedData = json.responseText.evalJSON(true);				
+				Callback(RecievedData);
+			},
+			onFailure: function(){
+				alert('Failed to get requested data');
 			}
 		});
+	},
+	SetAttributes: function(callback, postData){
+		Callback = callback;
+		PostData = postData;
+	},
+	GetRecievedData: function(){
+		if (isSuccess)
+			return RecievedData;
+		else 
+			return null;
 	}
-};
+	self: null,
+	isSuccess: false,
+	PostData: null,
+	RecievedData: null,
+	Callback: null
+});
 
+(
 var loader = new JSONLoader();
+)();
