@@ -11,9 +11,11 @@
 			onSuccess: function(json) {
 				RecievedData = json.responseText.evalJSON(true);
 				Callback(RecievedData);
+				isSuccess = true;
 			}
 			onFailure: function(){
 				alert('Failed to get requested data');
+				isSuccess = false;
 			}
 		});
 	},
@@ -28,9 +30,49 @@
 			onSuccess: function(json) {
 				RecievedData = json.responseText.evalJSON(true);				
 				Callback(RecievedData);
+				isSuccess = true;
 			},
 			onFailure: function(){
 				alert('Failed to get requested data');
+				isSuccess = false;
+			}
+		});
+	},
+	Put: function(url, put, callback) {
+		if (callback) Callback = callback;
+		if (put) PostData = put;
+		var Request = new Ajax.Request(url, {
+			method: "PUT",
+			parameters:	{
+				data: PostData
+			},
+			onSuccess: function(json) {
+				RecievedData = json.responseText.evalJSON(true);				
+				Callback(RecievedData);
+				isSuccess = true;
+			},
+			onFailure: function(){
+				alert('Failed to get requested data');
+				isSuccess = false;
+			}
+		});
+	},
+	Remove: function(url, remove, callback) {
+		if (callback) Callback = callback;
+		if (remove) PostData = remove;
+		var Request = new Ajax.Request(url, {
+			method: "REMOVE",
+			parameters: {
+				data: PostData
+			},
+			onSuccess: function(json) {
+				RecievedData = json.responseText.evalJSON(true);				
+				Callback(RecievedData);
+				isSuccess = true;
+			},
+			onFailure: function(){
+				alert('Failed to get requested data');
+				isSuccess = false;
 			}
 		});
 	},

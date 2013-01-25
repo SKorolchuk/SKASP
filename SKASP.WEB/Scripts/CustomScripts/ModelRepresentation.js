@@ -88,7 +88,7 @@ var Message = Class.create(ForumItemTemplate, {
 	Text: null,
 	getRepresentation: function($super){
 		//ISSUE: Need Proper Realization
-		return $super() + ('<p>' + this.Data + '</p><p>' + this.MsgOwner + '</p>');
+		return $super() + ('<p>' + this.Topic + '</p><p>' + this.Text + '</p>');
 	}
 });
 
@@ -102,7 +102,7 @@ var Topic = Class.create(ForumItemTemplate, {
 	Theme: null,
 	getRepresentation: function($super){
 		//ISSUE: Need Proper Realization
-		return $super() + ('<p>' + this.Data + '</p><p>' + this.MsgOwner + '</p>');
+		return $super() + ('<p>' + this.Description + '</p><p>' + this.Theme + '</p>');
 	}
 });
 
@@ -112,7 +112,10 @@ var Theme = Class.create(ForumItemTemplate, {
 		
 	},
 	Description: null,	
-	Subgroup: null
+	Subgroup: null,
+	getRepresentation: function($super){
+		return $super() + ('<p>' + this.Description + '</p><p>' + this.Subgroup + '</p>');
+	}
 });
 
 //End Forum rep.
