@@ -53,11 +53,22 @@ namespace SKASP.DOMAIN.ViewModels
 		/// </summary>
 		public void ReloadCurrentMessage()
 		{
-			this.CurrrentMessage = new MessageStorage()
-				                       {
-					                       ID = this.MessageRepo.Repository.Max(x => x.ID) + 1,
-										   MsgOwner = this.CurrentUser
-				                       };
+			try
+			{
+				this.CurrrentMessage = new MessageStorage()
+					                       {
+						                       ID = this.MessageRepo.Repository.Max(x => x.ID) + 1,
+						                       MsgOwner = this.CurrentUser
+					                       };
+			}
+			catch (Exception ex)
+			{
+				this.CurrrentMessage = new MessageStorage()
+					                       {
+						                       ID = 0,
+											   MsgOwner = this.CurrentUser
+					                       };
+			}
 		}
 	}
 }

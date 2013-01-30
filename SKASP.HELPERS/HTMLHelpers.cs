@@ -23,7 +23,7 @@ namespace SKASP.HELPERS
 				entry.Name,
 				entry.NewsContent,
 				entry.Date.Value.ToLongDateString() ?? "",
-				entry.ID);
+				(int)entry.ID);
 			return context.Raw(html);
 		}
     }

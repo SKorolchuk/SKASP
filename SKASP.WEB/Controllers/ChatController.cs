@@ -44,5 +44,13 @@ namespace SKASP.WEB.Controllers
 			viewModel.ReloadCurrentMessage();
 			return RedirectToAction("Chat");
         }
+
+		[Authorize(Users = "sergio")]
+		[System.Web.Mvc.HttpPost]
+		public RedirectToRouteResult RemoveMsg(MessageStorage msg)
+		{
+			messages.RemoveValue(msg);
+			return RedirectToAction("Chat");
+		}
     }
 }

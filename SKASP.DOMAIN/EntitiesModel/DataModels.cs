@@ -71,7 +71,7 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// </summary>
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
-		public Int64 UserId { get; set; }
+		public int UserId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.
@@ -129,7 +129,7 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// </summary>
 		[Key]
 		[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-		public Int64 PictureId { get; set; }
+		public int PictureId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the picture binary.
@@ -148,7 +148,7 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// </summary>
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
-		public Int64 ID { get; set; }
+		public int ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the creator.
@@ -182,7 +182,7 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// </summary>
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
-		public Int64 ID { get; set; }
+		public int ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.
@@ -221,7 +221,7 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// </summary>
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
-		public Int64 ID { get; set; }
+		public int ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.
@@ -260,7 +260,7 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// </summary>
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
-		public Int64 ID { get; set; }
+		public int ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date.
@@ -284,7 +284,7 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// </summary>
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
-		public Int64 ID { get; set; }
+		public int ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.
@@ -313,7 +313,7 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// </summary>
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Int64 ID { get; set; }
+        public int ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.

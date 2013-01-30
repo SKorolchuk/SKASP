@@ -1,7 +1,25 @@
 ﻿@model SKASP.DOMAIN.EntitiesModel.MessageStorage
-<span>
-@Html.HiddenFor(x => x.ID)
-@Html.DisplayFor(x => x.MsgOwner) Owner
-@Html.DisplayFor(x => x.Name) Name
-@Html.DisplayFor(x => x.Data) Data
-</span>
+<link rel="stylesheet" href="~/Styles/Chat.css"/>
+<div class="media">
+	<a class="pull-left" href="#">
+		<img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 64px; height: 64px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABWUlEQVR4nO2VMY7CMBBFuf9RfAMfwL17t67nCkM1aHBIASF5QvziSbtLGD0/T7Q3M/N/5kYL0CgALUCjALQAjQLQAjQKQAvQKAAtQKMAtACNAtACNApAC9AoAC1AowC0AI0C0AI0CkAL0HwlQCnlQe998/kYY/ezK2eeEqDW6q01NzNvrXkpxeecm2fekT1j5ikB5pxeSvExxu4zvfeNbHwvDtl7fxzy05lIgFjDkFnF82FW2bhZM3uKcWTm5QHi5kJiXddY5ZBeZfN7/q2ZyAbEDeXfX631KhuHy38/OvPSAOv7mmXzCmdi1eO78Vzc8JGZlwfIK5lvdC9Uvq1aq9daNz8fmYkEMHt+l9d/V69kY5XXW86HeXcmGuCXUQBagEYBaAEaBaAFaBSAFqBRAFqARgFoARoFoAVoFIAWoFEAWoBGAWgBGgWgBWgUgBagUQBagEYBaAGaO387LYipKEKVAAAAAElFTkSuQmCC"/>
+	</a>
+	<div class="media-body">
+		<h4 class="media-heading"></h4>
+		@Html.HiddenFor(x => x.ID)
+		<span class="label label-info span9 User" style="font-size: 18px;">User: @Html.DisplayFor(x => x.MsgOwner)</span>
+		<br />
+		<span class="label label-warning span9 Theme" style="font-size: 16px;">Theme: @Html.DisplayFor(x => x.Name)</span>
+		<br/>
+		<span class="label label-inverse span9 Content" style="font-size: 14px;">@Html.DisplayFor(x => x.Data)</span>
+		<div id="message @Model.ID">
+			@if (User.Identity.Name == "sergio")
+			{
+				 using (Html.BeginForm("RemoveMsg", "Chat", new { ID = Model.ID, MsgOwner = Model.MsgOwner.TrimEnd(), Name = Model.Name.TrimEnd(), Data = Model.Data.TrimEnd() }))
+				 {
+					 <input type="submit" class="btn" value="x"/>
+				 }
+			}
+		</div>
+	</div>
+</div>

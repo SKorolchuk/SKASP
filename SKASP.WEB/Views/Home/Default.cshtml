@@ -7,38 +7,84 @@
     ViewBag.Title = "Default";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-
+<div>
+		          <div id="defaultCarousel" class="carousel slide">
+			          <div class="carousel-inner">
+				          <div class="item active">
+					          <img alt="" src="@Url.Content("../../Content/images/carousel/shot_001.jpg")" />
+					          <div class="carousel-caption"></div>
+				          </div>
+				          <div class="item">
+					          <img alt="" src="@Url.Content("../../Content/images/carousel/shot_002.jpg")" />
+					          <div class="carousel-caption"></div>
+				          </div>
+				          <div class="item">
+					          <img alt="" src="@Url.Content("../../Content/images/carousel/shot_003.jpg")" />
+					          <div class="carousel-caption"></div>
+				          </div>
+			          </div>
+			          <a class="left carousel-control" data-slide="prev" href="#defaultCarousel"></a>
+			          <a class="right carousel-control" data-slide="next" href="#defaultCarousel"></a>
+		          </div>
+	          </div>
+	          <script language="javascript">
+          		$('.carousel').carousel({
+          			interval: 1000
+          		});
+          	</script>
 <div class="row-fluid">
         <div class="span12">
           <div class="hero-unit">
             <h1>Greetings you on my ASP.NET Blog! For Now with MVC</h1>
 			  <p>This technical blog I used for increased my skills in web design, development and etc.</p>      
-              <p>You can find at this site:</p>
-              <div>
-                  <span class="info"></span>
-                  <a href="#">Information About Me...</a>
-              </div>
-              <span>
-                  <span class="chat"></span>
-                  <a href="#">Simple Chat, when you can ask me several questions...</a>
-              </span>
-              <span>
-                  <span class="rss"></span>
-              <a href="#">RSS Reader, when you can reead your favorite feeds...</a>
-              </span>
-              <span>
-                  <span class="info"></span>
-              <a href="#">Forum, where you can create youth problem topics...</a>
-              </span>
-				<p>and a lot of other things...</p>
-				<br/>
-				<p>Wish you a lot of fun with my site...</p>
+	          <p>You can find at this site:</p>
+	          <div>
+		          <div class="media">
+			          <a class="pull-left" href="#">
+				          <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 64px; height: 64px;" src="@Url.Content("../../Content/images/icons/info.jpg")"/>
+			          </a>
+			          <div class="media-body">
+				          <h4 class="media-heading"></h4>
+				          Information About Me...
+			          </div>
+		          </div>
+		          <div class="media">
+			          <a class="pull-left" href="#">
+				          <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 64px; height: 64px;" src="@Url.Content("../../Content/images/icons/chat.png")"/>
+			          </a>
+			          <div class="media-body">
+				          <h4 class="media-heading"></h4>
+				          Simple Chat, when you can ask me several questions...
+			          </div>
+		          </div>
+		          <div class="media">
+			          <a class="pull-left" href="#">
+				          <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 64px; height: 64px;" src="@Url.Content("../../Content/images/icons/rss.png")"/>
+			          </a>
+			          <div class="media-body">
+				          <h4 class="media-heading"></h4>
+				          RSS Reader, when you can reead your favorite feeds...
+			          </div>
+		          </div>
+		          <div class="media">
+			          <a class="pull-left" href="#">
+				          <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 64px; height: 64px;" src="@Url.Content("../../Content/images/icons/forum.png")"/>
+			          </a>
+			          <div class="media-body">
+				          <h4 class="media-heading"></h4>
+				          Forum, where you can create youth problem topics...
+			          </div>
+		          </div>
+		          <p>and a lot of other things...</p>
+		          <br/>
+		          <p>Wish you a lot of fun with my site...</p>
+	          </div>
             <p><a class="btn btn-primary btn-large" href="@Url.Action("About", "Home")">Learn more &raquo;</a></p>
           </div>
 	        <div id="NewsArray" class="label-success well">
 		        You can see @Model.Repository.Count() news on this site!
 			</div>
-		        @foreach (News news in Model.Repository.OrderByDescending(x => x.Date))
+		        @foreach (News news in Model.Repository)
 		        {
 			        @Html.NewsViewer(news)
 		        }

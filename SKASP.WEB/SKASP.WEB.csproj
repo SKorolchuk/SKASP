@@ -182,19 +182,22 @@
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountManagerApiController.cs" />
     <Compile Include="Controllers\AccountManagerController.cs" />
     <Compile Include="Controllers\AJAXController.cs" />
+    <Compile Include="Controllers\ChatApiController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Controllers\ForumApiController.cs" />
     <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
-    <Compile Include="Controllers\RestApiController.cs" />
+    <Compile Include="Controllers\NewsApiController.cs" />
     <Compile Include="Controllers\RSSController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Internal\IoCControllerFactory.cs" />
+    <Compile Include="Internal\IoCControllerKernel.cs" />
     <Compile Include="Internal\NinjectDependencyResolver.cs" />
     <Compile Include="Internal\NinjectDependencyScope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -207,12 +210,16 @@
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\carousel\shot_001.jpg" />
+    <Content Include="Content\images\carousel\shot_002.jpg" />
+    <Content Include="Content\images\carousel\shot_003.jpg" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\background\wood.jpg" />
     <Content Include="Content\images\icons\chat.png" />
-    <Content Include="Content\images\icons\feed-icon-16x16.png" />
-    <Content Include="Content\images\icons\info.ico" />
+    <Content Include="Content\images\icons\forum.png" />
+    <Content Include="Content\images\icons\info.jpg" />
+    <Content Include="Content\images\icons\rss.png" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\Home Pub.pubxml" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
@@ -221,7 +228,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\CustomScripts\AJAX.js" />
     <Content Include="Scripts\CustomScripts\jQueryPractise.js" />
-    <Content Include="Scripts\CustomScripts\PersonClass.js" />
+    <Content Include="Scripts\CustomScripts\ModelRepresentation.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -235,6 +242,10 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\prototype.js" />
+    <Content Include="Scripts\VMs\ChatViewModel.js" />
+    <Content Include="Scripts\VMs\ForumViewModel.js" />
+    <Content Include="Scripts\VMs\NewsViewModel.js" />
+    <Content Include="Styles\Chat.css" />
     <Content Include="Styles\Main.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Web.config">

@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Chat";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
+	ViewBag.Admins = new []{"sergio"};
 }
 
 <link href="@Url.Content("../../Styles/Chat.css")" rel="stylesheet"/>
@@ -10,8 +11,9 @@
 	@using (Html.BeginForm("PostChat", "Chat", FormMethod.Post)){
 		<div align="center" style="font-family: Calibri">
 			@Html.Hidden("ID", Model.CurrrentMessage.ID)
+			@Html.Hidden("MsgOwner", User.Identity.Name)
 			<p style="color: White;">User Name</p>
-			@Html.Display("MsgOwner", Model.CurrrentMessage.MsgOwner)
+			<span class="label label-important" style="font-size: 16px;">@User.Identity.Name</span>
 			<p style="color: White;">Name</p>
 			@Html.Editor("Name", Model.CurrrentMessage.Name)
 			<p style="color: White;">Message</p>
@@ -32,6 +34,6 @@
 		}
 	</div>
 	<br/>
-	<input type="button" ID="ReturnBtn" value="Return to Main Page" CssClass="btn btn-primary btn-large" />
+	<input type="button" ID="ReturnBtn" value="Return to Main Page" class="btn btn-primary btn-large" />
 	<br/>    
 </div>

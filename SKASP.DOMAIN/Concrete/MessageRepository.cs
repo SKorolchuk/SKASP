@@ -31,7 +31,7 @@ namespace SKASP.DOMAIN.Concrete
 		{
 			if (this.dataContext.MessageStorages.Count(x => x.ID == record.ID) > 0)
 			{
-				dataContext.MessageStorages.Remove(record);
+				dataContext.MessageStorages.Remove(dataContext.MessageStorages.FirstOrDefault(x => x.ID == record.ID));
 				dataContext.SaveChanges();
 			}
 		}

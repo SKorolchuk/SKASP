@@ -1,16 +1,13 @@
-.message{
-    font-family: 'Arial';
-    font-size: 20;
+.User {
+	padding: 10px;
 }
 
-.user {
+.Theme {
+	padding: 10px;
+	margin-top: 10px;
 }
 
-.name {
-    font-family: 'Consolas';
-    font-size: 14;
-    
-}
-
-.description {
+.Content {
+	padding: 10px;
+	margin-bottom: 10px;
 }
