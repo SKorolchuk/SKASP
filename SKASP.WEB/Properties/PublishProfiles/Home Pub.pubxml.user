@@ -68,13 +68,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/12/2013 19:46:57</publishTime>
     </File>
     <File Include="bin/SKASP.DOMAIN.dll">
-      <publishTime>01/17/2013 20:39:16</publishTime>
+      <publishTime>01/31/2013 23:28:35</publishTime>
     </File>
     <File Include="bin/SKASP.HELPERS.dll">
-      <publishTime>01/17/2013 20:39:19</publishTime>
+      <publishTime>01/31/2013 23:28:36</publishTime>
     </File>
     <File Include="bin/SKASP.WEB.dll">
-      <publishTime>01/17/2013 20:39:22</publishTime>
+      <publishTime>01/31/2013 23:28:37</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>12/22/2012 20:41:44</publishTime>
@@ -133,6 +133,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/images/background/wood.jpg">
       <publishTime>12/23/2012 13:15:43</publishTime>
     </File>
+    <File Include="Content/images/carousel/shot_001.jpg">
+      <publishTime>01/26/2013 17:55:08</publishTime>
+    </File>
+    <File Include="Content/images/carousel/shot_002.jpg">
+      <publishTime>01/26/2013 17:55:08</publishTime>
+    </File>
+    <File Include="Content/images/carousel/shot_003.jpg">
+      <publishTime>01/26/2013 17:55:08</publishTime>
+    </File>
     <File Include="Content/images/glyphicons-halflings-white.png">
       <publishTime>12/23/2012 13:14:36</publishTime>
     </File>
@@ -140,13 +149,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/23/2012 13:14:36</publishTime>
     </File>
     <File Include="Content/images/icons/chat.png">
-      <publishTime>12/27/2012 20:43:25</publishTime>
+      <publishTime>01/26/2013 13:55:42</publishTime>
     </File>
     <File Include="Content/images/icons/feed-icon-16x16.png">
       <publishTime>12/27/2012 20:43:25</publishTime>
     </File>
+    <File Include="Content/images/icons/forum.png">
+      <publishTime>01/26/2013 13:55:14</publishTime>
+    </File>
     <File Include="Content/images/icons/info.ico">
       <publishTime>12/27/2012 20:43:25</publishTime>
+    </File>
+    <File Include="Content/images/icons/info.jpg">
+      <publishTime>01/26/2013 13:54:33</publishTime>
+    </File>
+    <File Include="Content/images/icons/rss.png">
+      <publishTime>01/26/2013 13:55:31</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>12/22/2012 20:40:53</publishTime>
@@ -164,10 +182,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/23/2012 13:14:36</publishTime>
     </File>
     <File Include="Scripts/CustomScripts/AJAX.js">
-      <publishTime>01/13/2013 16:47:42</publishTime>
+      <publishTime>01/26/2013 13:04:41</publishTime>
     </File>
     <File Include="Scripts/CustomScripts/jQueryPractise.js">
       <publishTime>01/13/2013 16:04:04</publishTime>
+    </File>
+    <File Include="Scripts/CustomScripts/ModelRepresentation.js">
+      <publishTime>01/26/2013 13:04:41</publishTime>
     </File>
     <File Include="Scripts/CustomScripts/PersonClass.js">
       <publishTime>12/23/2012 13:17:08</publishTime>
@@ -208,8 +229,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/prototype.js">
       <publishTime>12/23/2012 13:17:39</publishTime>
     </File>
+    <File Include="Scripts/VMs/ChatViewModel.js">
+      <publishTime>01/26/2013 18:08:56</publishTime>
+    </File>
+    <File Include="Scripts/VMs/ForumViewModel.js">
+      <publishTime>01/26/2013 18:08:56</publishTime>
+    </File>
+    <File Include="Scripts/VMs/NewsViewModel.js">
+      <publishTime>01/26/2013 18:08:56</publishTime>
+    </File>
+    <File Include="Styles/Chat.css">
+      <publishTime>01/30/2013 23:52:30</publishTime>
+    </File>
     <File Include="Styles/Main.css">
-      <publishTime>01/06/2013 01:22:05</publishTime>
+      <publishTime>01/26/2013 17:32:20</publishTime>
     </File>
     <File Include="Styles/Site.css">
       <publishTime>12/28/2012 21:59:26</publishTime>
@@ -248,7 +281,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/13/2013 16:41:53</publishTime>
     </File>
     <File Include="Views/Chat/Chat.cshtml">
-      <publishTime>12/28/2012 22:34:57</publishTime>
+      <publishTime>01/31/2013 00:24:31</publishTime>
+    </File>
+    <File Include="Views/Chat/_MessageViewer.cshtml">
+      <publishTime>01/31/2013 00:50:02</publishTime>
     </File>
     <File Include="Views/Forum/Themes.cshtml">
       <publishTime>01/11/2013 01:25:25</publishTime>
@@ -260,7 +296,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/15/2013 23:51:16</publishTime>
     </File>
     <File Include="Views/Home/Default.cshtml">
-      <publishTime>01/15/2013 23:26:40</publishTime>
+      <publishTime>01/26/2013 18:03:32</publishTime>
     </File>
     <File Include="Views/Home/NewsViewer.cshtml">
       <publishTime>12/23/2012 13:28:33</publishTime>
@@ -275,7 +311,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/15/2013 23:07:34</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutPage.cshtml">
-      <publishTime>01/16/2013 01:21:49</publishTime>
+      <publishTime>01/26/2013 13:45:08</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>01/06/2013 00:37:19</publishTime>
@@ -284,7 +320,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/22/2012 20:40:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/17/2013 20:39:24</publishTime>
+      <publishTime>01/31/2013 23:28:41</publishTime>
     </File>
   </ItemGroup>
 </Project>

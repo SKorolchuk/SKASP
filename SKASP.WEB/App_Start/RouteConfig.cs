@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Http;
+using Microsoft.AspNet.SignalR;
 
 namespace SKASP.WEB
 {
@@ -12,6 +13,7 @@ namespace SKASP.WEB
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+	        RouteTable.Routes.MapConnection<ChatRoomConnection>("ChatRoom", "ChatRoom/{*operation}");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
                 name: "Default",
