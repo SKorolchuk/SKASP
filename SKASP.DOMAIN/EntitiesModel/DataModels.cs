@@ -10,14 +10,14 @@ namespace SKASP.DOMAIN.EntitiesModel
 	/// The database entities.
 	/// </summary>
 	public class DatabaseEntities : DbContext
-    {
+	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="DatabaseEntities"/> class.
 		/// </summary>
 		public DatabaseEntities()
-            : base("DefaultConnection")
-        {
-        }
+			: base("DefaultConnection")
+		{
+		}
 
 		/// <summary>
 		/// Gets or sets the messages.
@@ -58,7 +58,7 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// Gets or sets the user data storage.
 		/// </summary>
 		public DbSet<UserData> UserDataStorage { get; set; }
-    }
+	}
 
 	/// <summary>
 	/// The user data.
@@ -141,8 +141,8 @@ namespace SKASP.DOMAIN.EntitiesModel
 	/// The message.
 	/// </summary>
 	[Table("Messages")]
-    public class Message
-    {
+	public class Message
+	{
 		/// <summary>
 		/// Gets or sets the id.
 		/// </summary>
@@ -175,8 +175,8 @@ namespace SKASP.DOMAIN.EntitiesModel
 	/// The topic.
 	/// </summary>
 	[Table("Topics")]
-    public class Topic
-    {
+	public class Topic
+	{
 		/// <summary>
 		/// Gets or sets the id.
 		/// </summary>
@@ -208,14 +208,14 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// Gets or sets the theme.
 		/// </summary>
 		public long Theme { get; set; }
-    }
+	}
 
 	/// <summary>
 	/// The theme.
 	/// </summary>
 	[Table("Themes")]
-    public class Theme
-    {
+	public class Theme
+	{
 		/// <summary>
 		/// Gets or sets the id.
 		/// </summary>
@@ -247,14 +247,14 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// Gets or sets the subgroup.
 		/// </summary>
 		public string Subgroup { get; set; }
-    }
+	}
 
 	/// <summary>
 	/// The statistic.
 	/// </summary>
 	[Table("Statistics")]
-    public class Statistic
-    {
+	public class Statistic
+	{
 		/// <summary>
 		/// Gets or sets the id.
 		/// </summary>
@@ -271,14 +271,14 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// Gets or sets the count.
 		/// </summary>
 		public int Count { get; set; }
-    }
+	}
 
 	/// <summary>
 	/// The news.
 	/// </summary>
 	[Table("News")]
-    public class News
-    {
+	public class News
+	{
 		/// <summary>
 		/// Gets or sets the id.
 		/// </summary>
@@ -300,20 +300,20 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// Gets or sets the date.
 		/// </summary>
 		public Nullable<System.DateTime> Date { get; set; }
-    }
+	}
 
 	/// <summary>
 	/// The message storage.
 	/// </summary>
 	[Table("MessageStorage")]
-    public class MessageStorage
-    {
+	public class MessageStorage
+	{
 		/// <summary>
 		/// Gets or sets the id.
 		/// </summary>
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
+		public int ID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name.
@@ -329,5 +329,5 @@ namespace SKASP.DOMAIN.EntitiesModel
 		/// Gets or sets the msg owner.
 		/// </summary>
 		public string MsgOwner { get; set; }
-    }
+	}
 }

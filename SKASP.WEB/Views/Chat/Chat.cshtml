@@ -1,8 +1,8 @@
 ﻿@using SKASP.DOMAIN.EntitiesModel
 @model SKASP.DOMAIN.ViewModels.MessageViewModel
 @{
-    ViewBag.Title = "Chat";
-    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+	ViewBag.Title = "Chat";
+	Layout = "~/Views/Shared/_LayoutPage.cshtml";
 	ViewBag.Admins = new []{"sergio"};
 }
 
@@ -27,7 +27,6 @@
 
 	<br/>
 	<div align="center" style="font-family: Calibri">
-        
 		@foreach (MessageStorage msg in Model.MessageRepo.Repository)
 		{
 			Html.RenderPartial("_MessageViewer", msg);
@@ -35,5 +34,5 @@
 	</div>
 	<br/>
 	<input type="button" ID="ReturnBtn" value="Return to Main Page" class="btn btn-primary btn-large" />
-	<br/>    
+	<br/>
 </div>

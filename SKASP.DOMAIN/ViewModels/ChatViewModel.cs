@@ -7,9 +7,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Linq;
+
 using SKASP.DOMAIN.Abstract;
 using SKASP.DOMAIN.EntitiesModel;
-using System.Linq;
 
 namespace SKASP.DOMAIN.ViewModels
 {
@@ -29,7 +30,6 @@ namespace SKASP.DOMAIN.ViewModels
 		/// Gets or sets the currrent message.
 		/// </summary>
 		public MessageStorage CurrrentMessage {get; set; }
-		//TODO: Change to User class type
 
 		/// <summary>
 		/// Gets or sets the current user.
@@ -44,8 +44,8 @@ namespace SKASP.DOMAIN.ViewModels
 		/// </param>
 		public MessageViewModel(string user = "")
 		{
-            		CurrrentMessage = new MessageStorage(){MsgOwner = user};
-			CurrentUser = user;
+			this.CurrrentMessage = new MessageStorage { MsgOwner = user };
+			this.CurrentUser = user;
 		}
 
 		/// <summary>
@@ -56,18 +56,18 @@ namespace SKASP.DOMAIN.ViewModels
 			try
 			{
 				this.CurrrentMessage = new MessageStorage()
-					                       {
-						                       ID = this.MessageRepo.Repository.Max(x => x.ID) + 1,
-						                       MsgOwner = this.CurrentUser
-					                       };
+											{
+												ID = this.MessageRepo.Repository.Max(x => x.ID) + 1,
+												MsgOwner = this.CurrentUser
+											};
 			}
 			catch (Exception ex)
 			{
 				this.CurrrentMessage = new MessageStorage()
-					                       {
-						                       ID = 0,
-											   MsgOwner = this.CurrentUser
-					                       };
+											{
+												ID = 0,
+												MsgOwner = this.CurrentUser
+											};
 			}
 		}
 	}

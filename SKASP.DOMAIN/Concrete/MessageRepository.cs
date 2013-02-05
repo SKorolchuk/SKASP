@@ -10,7 +10,7 @@ namespace SKASP.DOMAIN.Concrete
 	using SKASP.DOMAIN.EntitiesModel;
 
 	public class MessageRepository : IManageable<MessageStorage>
-    {
+	{
 		private DatabaseEntities dataContext = new DatabaseEntities();
 
 		public IQueryable<MessageStorage> Repository
@@ -70,5 +70,5 @@ namespace SKASP.DOMAIN.Concrete
 		{
 			throw new NotImplementedException();
 		}
-    }
+	}
 }

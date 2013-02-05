@@ -1,11 +1,11 @@
 ﻿@model SKASP.DOMAIN.EntitiesModel.News
 
-        <div class="span12 well well-large">
-            <h2>@Model.Name</h2>
-            <p>@Html.Raw(Model.NewsContent)</p>
-            <p>@Model.Date.ToString()</p>
-            <i class="divider"></i>
-            <p>
-                <a class="btn" href="/Home/Default/@Model.ID">View details &raquo;</a>
-            </p>
-        </div><!--/span-->
+<div class="span12 well well-large">
+	<h2>@Model.Name</h2>
+	<p>@Html.Raw(Model.NewsContent)</p>
+	<p>@Model.Date.ToString()</p>
+	<i class="divider"></i>
+	<p>
+		<a class="btn" href="/Home/Default/@Model.ID">View details &raquo;</a>
+	</p>
+</div>

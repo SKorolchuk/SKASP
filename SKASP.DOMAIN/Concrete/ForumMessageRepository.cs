@@ -10,7 +10,7 @@ namespace SKASP.DOMAIN.Concrete
 	using SKASP.DOMAIN.EntitiesModel;
 
 	public class ForumMessageRepository : IManageable<Message>
-    {
+	{
 		private DatabaseEntities dataContext = new DatabaseEntities();
 
 		public IQueryable<Message> Repository

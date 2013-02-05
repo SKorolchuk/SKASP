@@ -12,7 +12,7 @@ namespace SKASP.DOMAIN.Concrete
 	using SKASP.DOMAIN.EntitiesModel;
 
 	public class ForumThemeRepository : IManageable<Theme>
-    {
+	{
 		private DatabaseEntities dataContext = new DatabaseEntities();
 
 		public IQueryable<Theme> Repository
@@ -102,5 +102,5 @@ namespace SKASP.DOMAIN.Concrete
 				dataContext.SaveChanges();
 			}
 		}
-    }
+	}
 }

@@ -52,5 +52,11 @@ namespace SKASP.WEB.Controllers
 			messages.RemoveValue(msg);
 			return RedirectToAction("Chat");
 		}
+
+		[Authorize]
+		public ViewResult LiveChat()
+		{
+			return this.View();
+		}
     }
 }

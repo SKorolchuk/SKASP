@@ -12,7 +12,7 @@ namespace SKASP.DOMAIN.Concrete
 	/// The ef forum repository.
 	/// </summary>
 	public class EFForumRepository : IForumRepository
-    {
+	{
 		/// <summary>
 		/// The data context.
 		/// </summary>

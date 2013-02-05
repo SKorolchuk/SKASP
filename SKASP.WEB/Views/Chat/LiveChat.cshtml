@@ -1,0 +1,37 @@
+﻿@{
+	ViewBag.Title = "LiveChat";
+	Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<div class="container" class="span10"align="center">
+	<p id="UserName" class="label label-success">User: @User.Identity.Name</p>
+	<br/>
+	<input type="text" id="message" class="input-large span8"/>
+	<br/>
+	<input type="button" id="sendmessage" value="Send" class="btn btn-success span5" style="margin: 20px;"/>
+	<input type="hidden" id="displayname" />
+	<ul id="discussion" class="hero-unit span9"></ul>
+</div>
+<script type="text/javascript">
+	$(function () {
+
+		var chat = $.connection.chatHub;
+
+		chat.client.broadcastMessage = function (name, message) {
+			$('#discussion').append('<li class="label label-info span8" style="margin: 10px;"><strong class="label label-important">' + name
+				+ '</strong>:&nbsp;&nbsp;' + message + '</li><br/>');
+		};
+
+
+		$('#displayname').val('@User.Identity.Name');
+		$('#message').focus();
+		$.connection.hub.start().done(function () {
+			$('#sendmessage').click(function () {
+				var encodedName = $('<div />').text($('#displayname').val()).html();
+				var encodedMsg = $('<div />').text($('#message').val()).html();
+				chat.server.send(encodedName, encodedMsg);
+				$('#message').val('').focus();
+			});
+		});
+	});
+</script>
+<br/>
