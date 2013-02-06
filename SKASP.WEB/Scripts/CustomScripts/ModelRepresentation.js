@@ -1,26 +1,28 @@
 //Base Classes
-var TableTemplate = Class.Create({
+var TableTemplate = Class.create({
 	initialize: function(arg){
-		this.ID = arg.ID;
-		this.Name = arg.Name;
-	}
+		var self = this;
+		self.ID = ko.observable(arg.ID);
+		self.Name = ko.observable(arg.Name);
+	},
 	ID: 0,
 	Name: null,
 	getRepresentation: function(){
-		return ('<p>' + this.ID + ' ' + this.Name + '</p>');
+		return ('<p>' + this.ID() + ' ' + this.Name() + '</p>');
 	}
 });
 
 var ForumItemTemplate = Class.create(TableTemplate, {
 	initialize: function($super, arg){
 		$super(arg);
-		Creator = arg.Creator;
-		Created_on = ParseDate(arg.Created_on);
+		var self = this;
+		self.Creator = ko.observable(arg.Creator);
+		self.Created_on = /*ParseDate(*/ko.observable(arg.Created_on)/*)*/;
 	},
 	Creator: null,
 	Created_on: null,
 	getRepresentation: function($super){
-		return $super() + ('<p>' + this.Creator + ' ' + this.Created_on.toString() + '</p>');
+		return $super() + ('<p>' + this.Creator() + ' ' + this.Created_on().toString() + '</p>');
 	}
 });
 //End Base Classes
@@ -31,7 +33,7 @@ var News = Class.create(TableTemplate, {
 		$super(arg);
 		this.NewsContent = arg.NewsContent;
 		this.Date = ParseDate(arg.Date);
-	}
+	},
 	NewsContent: null,
 	Date: null,
 	getRepresentation: function($super){
@@ -44,7 +46,7 @@ var MessageStorage = Class.create(TableTemplate, {
 		$super(arg);
 		this.Data = arg.Data;
 		this.MsgOwner = arg.MsgOwner;
-	}
+	},
 	Data: null,
 	MsgOwner: null,
 	getRepresentation: function($super){
@@ -53,7 +55,7 @@ var MessageStorage = Class.create(TableTemplate, {
 });
 
 var Picture = Class.create({
-	initialize: fucntion(arg){
+	initialize: function(arg){
 		PictureId  = arg.PictureId;
 		PictureSrc = arg.PictureSrc;
 	},
@@ -62,7 +64,7 @@ var Picture = Class.create({
 });
 
 var Statistic = Class.create({
-	initialize: fucntion(arg){
+	initialize: function(arg){
 		ID = arg.ID;
 		Date = ParseDate(arg.Date);
 		Count = arg.Count;
@@ -109,12 +111,14 @@ var Topic = Class.create(ForumItemTemplate, {
 var Theme = Class.create(ForumItemTemplate, {
 	initialize: function($super, arg){
 		$super(arg);
-		
+		var self = this;
+		self.Description = ko.observable(arg.Description);
+		self.Subgroup = ko.observable(arg.Subgroup);
 	},
 	Description: null,	
 	Subgroup: null,
 	getRepresentation: function($super){
-		return $super() + ('<p>' + this.Description + '</p><p>' + this.Subgroup + '</p>');
+		return $super() + ('<p>' + this.Description() + '</p><p>' + this.Subgroup() + '</p>');
 	}
 });
 
@@ -140,7 +144,6 @@ var UserData = Class.create({
 });
 
 
-(functiion ParseDate(date){
-	return (new Date(parseInt(data.Date.replace(/\/Date\((-?\d+)\)\//, '$1'))));
+function ParseDate(date){
+	return (new Date(parseInt(date.Date.replace(/\/Date\((-?\d+)\)\//, '$1'))));
 }
-)();

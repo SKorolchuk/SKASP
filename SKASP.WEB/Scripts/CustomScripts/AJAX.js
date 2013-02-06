@@ -2,7 +2,6 @@
 	initialize: function(post, callback) {
 		PostData = post;
 		Callback = callback;
-		self = this;
 	},
 	Load: function(url, callback) {
 		if (callback) Callback = callback;
@@ -12,7 +11,7 @@
 				RecievedData = json.responseText.evalJSON(true);
 				Callback(RecievedData);
 				isSuccess = true;
-			}
+			},
 			onFailure: function(){
 				alert('Failed to get requested data');
 				isSuccess = false;
@@ -85,14 +84,9 @@
 			return RecievedData;
 		else 
 			return null;
-	}
-	self: null,
+	},
 	isSuccess: false,
 	PostData: null,
 	RecievedData: null,
 	Callback: null
 });
-
-(
-var loader = new JSONLoader();
-)();

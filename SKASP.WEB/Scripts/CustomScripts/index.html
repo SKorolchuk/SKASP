@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv = "Content-type" content = "text/html; charset = utf-8">
+		<title >KnockoutJS SPA</title>
+		<script type="text/javascript" src="jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="knockout-2.2.1.js"></script>
+		<script type="text/javascript" src="prototype.js"></script>
+		<script type="text/javascript" src="ModelRepresentation.js"></script>
+		<script type="text/javascript" src="AJAX.js"></script>
+		<script type="text/javascript">
+			var ForumViewModel = Class.create({
+			initialize: function(){
+					var self = this; 
+					self.Loader = new JSONLoader();
+					self.LoadForumModel();
+					debugger;
+					self.themes = ko.observableArray(Themes);
+					self.addingTheme = new Theme({ID: 0,
+														Name: "Test Theme",
+														Creator: "serg",
+														Created_on: new Date(),
+														Description: "Hello",
+														Subgroup: "Test"});
+					self.addTheme = function(){
+						self.themes.push(self.addingTheme);
+						self.addingTheme = new Theme(new Object());
+					}
+				},
+				LoadForumModel: function(){
+					Themes = [];
+					Topics = [];
+					Messages = [];
+					Themes[Themes.length] = new Theme({ID: 0,
+														Name: "Test Theme",
+														Creator: "serg",
+														Created_on: new Date(),
+														Description: "Hello",
+														Subgroup: "Test"});
+					/*Loader.Load("/ForumApi/GetMessages", function(data){
+						for (var i = 0; i < data.length; i++){
+							Messages[i] = new Message(data[i]);
+						}
+					});
+					Loader.Load("/ForumApi/GetTopics", function(data){
+						for (var i = 0; i < data.length; i++){
+							Topics[i] = new Topic(data[i]);
+						}
+					});
+					Loader.Load("/ForumApi/GetThemes", function(data){
+						for (var i = 0; i < data.length; i++){
+							Themes[i] = new Theme(data[i]);
+						}
+					});*/
+				},
+				AddTheme: function(item){
+					Loader.Send("ForumApi/PostTheme", item, self.LoadForumModel);
+				},
+				RemoveTheme: function(item){
+					Loader.Send("ForumApi/RemoveTheme", item, self.LoadForumModel);
+				},
+				UpdateTheme: function(item){
+					Loader.Send("ForumApi/PutTheme", item, self.LoadForumModel);
+				},
+				AddTopic: function(item){
+					Loader.Send("ForumApi/PostTopic", item, self.LoadForumModel);
+				},
+				RemoveTopic: function(item){
+					Loader.Send("ForumApi/RemoveTopic", item, self.LoadForumModel);
+				},
+				UpdateTopic: function(item){
+					Loader.Send("ForumApi/PutTopic", item, self.LoadForumModel);
+				},
+				AddMessage: function(item){
+					Loader.Send("ForumApi/PostMessage", item, self.LoadForumModel);
+				},
+				RemoveMessage: function(item){
+					Loader.Send("ForumApi/RemoveMessage", item, self.LoadForumModel);
+				},
+				UpdateMessage: function(item){
+					Loader.Send("ForumApi/PutMessage", item, self.LoadForumModel);
+				},
+				Loader: null,
+				Themes: null,
+				Topics: null,
+				Messages: null,
+				CurrentTheme: null,
+				CurrentTopic: null
+			});
+			
+			function OnLoadHandler(){
+			alert(0);
+				ko.applyBindings(new ForumViewModel());
+			}
+		</script>
+	</head>
+	<body onload="OnLoadHandler();">
+	<style>
+		#themesCont{
+			background: #a0a0a0;
+		}
+		
+		#themeCont{
+			background: #55dd00;
+		}
+		
+		#themeCont p {
+			margin: 10px;
+		}
+	</style>
+		<div id="themesCont" data-bind="foreach: themes">
+			<div id="themeCont">
+				<p data-bind="text: ID"></p>
+				<p data-bind="text: Name"></p>
+				<p data-bind="text: Creator"></p>
+				<p data-bind="text: Created_on"></p>
+				<p data-bind="text: Description"></p>
+				<p data-bind="text: Subgroup"></p>
+			</div>
+		</div>
+		<br/>
+		<input type="text" data-bind="value: addingTheme.ID"/>
+		<input type="text" data-bind="value: addingTheme.Name"/>
+		<input type="text" data-bind="value: addingTheme.Creator"/>
+		<input type="text" data-bind="value: addingTheme.Created_on"/>
+		<input type="text" data-bind="value: addingTheme.Description"/>
+		<input type="text" data-bind="value: addingTheme.Subgroup"/>
+		<input type="button" data-bind="click: addTheme"/>
+	</body>
+</html>
