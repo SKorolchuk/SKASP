@@ -3,9 +3,9 @@
 	<head>
 		<meta http-equiv = "Content-type" content = "text/html; charset = utf-8">
 		<title >KnockoutJS SPA</title>
-		<script type="text/javascript" src="jquery-1.9.1.js"></script>
-		<script type="text/javascript" src="knockout-2.2.1.js"></script>
-		<script type="text/javascript" src="prototype.js"></script>
+		<script type="text/javascript" src="../jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="../knockout-2.2.0.js"></script>
+		<script type="text/javascript" src="../prototype.js"></script>
 		<script type="text/javascript" src="ModelRepresentation.js"></script>
 		<script type="text/javascript" src="AJAX.js"></script>
 		<script type="text/javascript">
@@ -16,15 +16,25 @@
 					self.LoadForumModel();
 					debugger;
 					self.themes = ko.observableArray(Themes);
-					self.addingTheme = new Theme({ID: 0,
-														Name: "Test Theme",
-														Creator: "serg",
-														Created_on: new Date(),
-														Description: "Hello",
-														Subgroup: "Test"});
+					self.ID = ko.observable();
+					self.Name = ko.observable();
+					self.Creator = ko.observable();
+					self.Created_on = ko.observable();
+					self.Description = ko.observable();
+					self.Subgroup = ko.observable();
 					self.addTheme = function(){
-						self.themes.push(self.addingTheme);
-						self.addingTheme = new Theme(new Object());
+						self.themes.push(new Theme({ID: self.ID(),
+													Name: self.Name(),
+													Creator: self.Creator(),
+													Created_on: self.Created_on(),
+													Description: self.Description(),
+													Subgroup: self.Subgroup()}));
+						self.ID("");
+						self.Name("");
+						self.Creator("");
+						self.Created_on("");
+						self.Description("");
+						self.Subgroup("");
 					}
 				},
 				LoadForumModel: function(){
@@ -119,12 +129,12 @@
 			</div>
 		</div>
 		<br/>
-		<input type="text" data-bind="value: addingTheme.ID"/>
-		<input type="text" data-bind="value: addingTheme.Name"/>
-		<input type="text" data-bind="value: addingTheme.Creator"/>
-		<input type="text" data-bind="value: addingTheme.Created_on"/>
-		<input type="text" data-bind="value: addingTheme.Description"/>
-		<input type="text" data-bind="value: addingTheme.Subgroup"/>
+		<input type="text" data-bind="value: ID"/>
+		<input type="text" data-bind="value: Name"/>
+		<input type="text" data-bind="value: Creator"/>
+		<input type="text" data-bind="value: Created_on"/>
+		<input type="text" data-bind="value: Description"/>
+		<input type="text" data-bind="value: Subgroup"/>
 		<input type="button" data-bind="click: addTheme"/>
 	</body>
 </html>

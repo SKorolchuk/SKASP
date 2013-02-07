@@ -2,13 +2,13 @@
 var TableTemplate = Class.create({
 	initialize: function(arg){
 		var self = this;
-		self.ID = ko.observable(arg.ID);
-		self.Name = ko.observable(arg.Name);
+		self.ID = arg.ID;
+		self.Name = arg.Name;
 	},
 	ID: 0,
 	Name: null,
 	getRepresentation: function(){
-		return ('<p>' + this.ID() + ' ' + this.Name() + '</p>');
+		return ('<p>' + this.ID + ' ' + this.Name + '</p>');
 	}
 });
 
@@ -16,13 +16,13 @@ var ForumItemTemplate = Class.create(TableTemplate, {
 	initialize: function($super, arg){
 		$super(arg);
 		var self = this;
-		self.Creator = ko.observable(arg.Creator);
-		self.Created_on = /*ParseDate(*/ko.observable(arg.Created_on)/*)*/;
+		self.Creator = arg.Creator;
+		self.Created_on = /*ParseDate(*/arg.Created_on/*)*/;
 	},
 	Creator: null,
 	Created_on: null,
 	getRepresentation: function($super){
-		return $super() + ('<p>' + this.Creator() + ' ' + this.Created_on().toString() + '</p>');
+		return $super() + ('<p>' + this.Creator + ' ' + this.Created_on.toString() + '</p>');
 	}
 });
 //End Base Classes
@@ -112,13 +112,13 @@ var Theme = Class.create(ForumItemTemplate, {
 	initialize: function($super, arg){
 		$super(arg);
 		var self = this;
-		self.Description = ko.observable(arg.Description);
-		self.Subgroup = ko.observable(arg.Subgroup);
+		self.Description = arg.Description;
+		self.Subgroup = arg.Subgroup;
 	},
 	Description: null,	
 	Subgroup: null,
 	getRepresentation: function($super){
-		return $super() + ('<p>' + this.Description() + '</p><p>' + this.Subgroup() + '</p>');
+		return $super() + ('<p>' + this.Description + '</p><p>' + this.Subgroup + '</p>');
 	}
 });
 
